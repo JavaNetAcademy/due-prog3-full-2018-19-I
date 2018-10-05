@@ -2,17 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>hero</artifactId>
+    <artifactId>hoe</artifactId>
     <groupId>hu.javanetacademy.hoe</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-    <groupId>hu.javanetacademy.hoe.hero</groupId>
-    <artifactId>hero-web</artifactId>
+    <groupId>hu.javanetacademy.hoe</groupId>
+    <artifactId>web</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
-    <name>hero-web</name>
+    <name>web</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -21,14 +21,14 @@
     
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>hero-service-object</artifactId>
-            <version>${project.version}</version>
+            <groupId>hu.javanetacademy.hoe.user</groupId>
+            <artifactId>user-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <groupId>hu.javanetacademy.hoe.hero</groupId>
+            <artifactId>hero-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

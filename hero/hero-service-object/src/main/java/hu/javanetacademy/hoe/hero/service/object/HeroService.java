@@ -1,5 +1,6 @@
 package hu.javanetacademy.hoe.hero.service.object;
 
+import hu.javanetacademy.hoe.base.util.CustomException;
 import hu.javanetacademy.hoe.hero.dao.file.HeroJDBCDAOImpl;
 import hu.javanetacademy.hoe.hero.dao.model.Hero;
 import hu.javanetacademy.hoe.hero.dao.model.HeroDAOInterface;
