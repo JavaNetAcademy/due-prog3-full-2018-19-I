@@ -11,7 +11,7 @@
     <modules>
         <module>hero-dao-model</module>
         <module>hero-service-object</module>
-    <module>hero-web</module>
+        <module>hero-web</module>
         <module>hero-dao-jdbc</module>
     </modules>
 </project>

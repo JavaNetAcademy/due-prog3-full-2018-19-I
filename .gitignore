@@ -6,3 +6,5 @@
 /user/user-servece-object/target/
 /user/user-dao-model/target/
 /user/user-dao-jdbc/target/
+/web/target/
+/user/user-web/target/

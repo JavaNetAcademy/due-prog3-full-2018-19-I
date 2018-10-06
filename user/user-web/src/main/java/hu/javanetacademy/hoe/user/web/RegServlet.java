@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author krisztian
  */
-@WebServlet(name = "RegServlet", urlPatterns = {"/reg"})
+@WebServlet(name = "RegServlet", urlPatterns = {"/user/reg"})
 public class RegServlet extends HttpServlet {
 
 
@@ -37,8 +37,8 @@ public class RegServlet extends HttpServlet {
         String name = request.getParameter("pname");
         String password = request.getParameter("ppassword");
         UserServiceObjectImpl service = new UserServiceObjectImpl();
-        User user=service.registration(name, password);
-        request.getSession().setAttribute("user", user);        
+        User user=service.registration(name, password);     
+        getServletContext().getRequestDispatcher("/user/login").include(request, response);
     }
 
     /**

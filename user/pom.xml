@@ -12,5 +12,6 @@
         <module>user-dao-model</module>
         <module>user-dao-jdbc</module>
         <module>user-servece-object</module>
+        <module>user-web</module>
     </modules>
 </project>
