@@ -1,6 +1,5 @@
 package hu.javanetacademy.hoe.hero.web;
 
-
 import hu.javanetacademy.hoe.hero.dao.model.Hero;
 import hu.javanetacademy.hoe.hero.service.object.HeroService;
 import java.io.IOException;
@@ -18,10 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "HeroServlet", urlPatterns = {"/hero/hero"})
 public class HeroServlet extends HttpServlet {
-    
-  
-        
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -34,10 +30,10 @@ public class HeroServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
- response.setContentType("text/html;charset=UTF-8");   
+        response.setContentType("text/html;charset=UTF-8");
         HeroService hs = new HeroService();
-        request.setAttribute("heroes",hs.getHeroByUser(100));
- 
+        request.setAttribute("heroes", hs.getHeroByUser(100));
+
         getServletContext().getRequestDispatcher("/hero.jsp").include(request, response);
     }
 
@@ -51,8 +47,8 @@ public class HeroServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {  
-        
+            throws ServletException, IOException {
+
         Hero newHero = new Hero();
         newHero.setName(request.getParameter("pname"));
         newHero.setDescription(request.getParameter("pdesc"));
