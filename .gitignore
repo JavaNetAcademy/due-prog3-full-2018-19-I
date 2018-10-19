@@ -8,3 +8,7 @@
 /user/user-dao-jdbc/target/
 /web/target/
 /user/user-web/target/
+/building/building-dao-model/target/
+/building/building-service-object/target/
+/building/building-web/target/
+/building/building-dao-jdbc/target/
