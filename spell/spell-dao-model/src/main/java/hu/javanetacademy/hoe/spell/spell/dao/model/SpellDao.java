@@ -10,5 +10,5 @@ package hu.javanetacademy.hoe.spell.spell.dao.model;
  * @author Attila
  */
 public interface SpellDao {
-    
+    public Spell Create(Spell newspell);
 }

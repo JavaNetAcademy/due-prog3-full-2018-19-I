@@ -10,9 +10,14 @@ package hu.javanetacademy.hoe.spell.spell.dao.model;
  * @author Attila
  */
 public class Spell {
+    // Azonosító
     private long id;
+    // Neve
     private String nev;
+    // Leírás
     private String info;
+    // Támadó erő
     private long attpower;
+    // Támadó Védekező erő
     private long deffpower;
 }
