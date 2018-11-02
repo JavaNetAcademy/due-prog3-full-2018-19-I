@@ -25,5 +25,9 @@ public class EmpireServiceObjectImpl {
     {
         return dao.getLocations(empid);
     }
+    public Empire get(long id)
+    {
+        return dao.get(id);
+    }
     
 }

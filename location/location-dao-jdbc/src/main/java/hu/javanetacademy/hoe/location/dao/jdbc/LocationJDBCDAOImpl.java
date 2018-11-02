@@ -56,7 +56,16 @@ public class LocationJDBCDAOImpl implements LocationDAOInterface{
 
     @Override
     public Location modify(long pOldLocationId, Location pNewLocation) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps=con.prepareStatement("UPDATE location SET name=?, description=? WHERE id=?");
+            ps.setString(1, pNewLocation.getName());
+            ps.setString(2, pNewLocation.getDesc());
+            ps.setLong(3, pOldLocationId);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(LocationJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     @Override

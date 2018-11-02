@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         UserServiceObjectImpl service = new UserServiceObjectImpl();
         User user=service.login(name, password);
         request.getSession().setAttribute("user", user); 
-        getServletContext().getRequestDispatcher("/hero/add.jsp").include(request, response);
+        getServletContext().getRequestDispatcher("/index").include(request, response);
     }
 
     /**

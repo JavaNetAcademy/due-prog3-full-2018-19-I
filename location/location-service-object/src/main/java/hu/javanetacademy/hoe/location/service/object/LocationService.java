@@ -29,4 +29,12 @@ public class LocationService {
     {
         locdb.delete(id);
     }
+    public Location get(long id)
+    {
+       return locdb.get(id);
+    }
+    public Location modify (long oldid, Location newloc)
+    {
+        return locdb.modify(oldid, newloc);
+    }
 }
