@@ -11,5 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spell-dao-model</module>
+        <module>spell-dao-jdbc</module>
+        <module>spell-service-object</module>
     </modules>
 </project>

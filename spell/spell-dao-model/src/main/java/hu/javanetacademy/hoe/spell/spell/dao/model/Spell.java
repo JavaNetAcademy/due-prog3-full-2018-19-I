@@ -11,27 +11,28 @@ package hu.javanetacademy.hoe.spell.spell.dao.model;
  */
 public class Spell {
     // Azonosító
-    private long id;
+    private long id,heroid;
     // Neve
-    private String nev;
+    private String name;
     // Leírás
-    private String info;
+    private String description;
     // Támadó erő
     private long attpower;
     // Támadó Védekező erő
     private long deffpower;
 
-    
-    // Constructor
-    public Spell(long id, String nev, String info, long attpower, long deffpower) {
+    public Spell(long id, long heroid, String name, String description, long attpower, long deffpower) {
         this.id = id;
-        this.nev = nev;
-        this.info = info;
+        this.heroid = heroid;
+        this.name = name;
+        this.description = description;
         this.attpower = attpower;
         this.deffpower = deffpower;
     }
 
-    // Getter / Setter
+    public Spell() {
+    }
+
     public long getId() {
         return id;
     }
@@ -40,20 +41,28 @@ public class Spell {
         this.id = id;
     }
 
-    public String getNev() {
-        return nev;
+    public long getHeroid() {
+        return heroid;
     }
 
-    public void setNev(String nev) {
-        this.nev = nev;
+    public void setHeroid(long heroid) {
+        this.heroid = heroid;
     }
 
-    public String getInfo() {
-        return info;
+    public String getName() {
+        return name;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public long getAttpower() {
@@ -71,5 +80,6 @@ public class Spell {
     public void setDeffpower(long deffpower) {
         this.deffpower = deffpower;
     }
+    
     
 }
