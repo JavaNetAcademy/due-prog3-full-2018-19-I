@@ -13,6 +13,7 @@ import java.util.List;
  * 
  */
 public interface itemdao {
+    
     public List<item> getAll();
     public item getById(long id);
     public item getByName(String name);
