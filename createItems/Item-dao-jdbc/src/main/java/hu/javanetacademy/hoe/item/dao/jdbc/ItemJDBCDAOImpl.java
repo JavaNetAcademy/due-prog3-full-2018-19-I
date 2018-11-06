@@ -33,15 +33,13 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         } catch (Exception e) {
             System.exit(100);
         }
-    }
-    
+    }    
         @Override
     public Item create (Item item){
         try {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO location (name, description, empid) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
-            ps.setLong(1,item.getId());
-            ps.setString(2,item.getNev());
-            ps.setString(3,item.getInfo());
+            PreparedStatement ps=con.prepareStatement("INSERT INTO location (nev, info, mennyiseg) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1,item.getNev());
+            ps.setString(2,item.getInfo());
             ps.setLong(4,item.getMennyiseg());
             ps.executeUpdate();
             ResultSet rs=ps.getGeneratedKeys();
@@ -54,27 +52,25 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         }
         return null;
     }
-
     @Override
     public Item modify(long id, Item item) {
         try {
-            PreparedStatement ps=con.prepareStatement("UPDATE location SET name=?, description=? WHERE id=?");
-            ps.setLong(1,item.getId());
-            ps.setString(2,item.getNev());
-            ps.setString(3,item.getInfo());
-            ps.setLong(4,item.getMennyiseg());
+            PreparedStatement ps=con.prepareStatement("UPDATE Item SET name=?, description=? WHERE id=?");
+              ps.setString(1, item.getNev());
+            ps.setString(2, item.getInfo());
+            ps.setLong(3, item.getMennyiseg());
+            ps.setLong(3, id);
             ps.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-
     @Override
     public Item delete(long id) {
         PreparedStatement ps;
         try {
-            ps = con.prepareStatement("DELETE FROM location where id=?");
+            ps = con.prepareStatement("DELETE FROM Item where id=?");
             ps.setLong(1,id);
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -82,11 +78,10 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         }
         return null;      
     }
-
     @Override
-    public Item get(long Id) {
+    public Item getById(long Id) {
         try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,name,description,empid FROM location where id=?");
+            PreparedStatement ps=con.prepareStatement("SELECT id,nev,info, FROM location where id=?");
             ps.setLong(1, Id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()) {
@@ -102,28 +97,5 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         }
         return null;
     }
-
-    @Override
-    public List<Item> getByEmpire(long id) {
-                try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,name,description,empid FROM location where empid=?");
-            ps.setLong(1, id);
-            ResultSet rs=ps.executeQuery();
-            List<Item> locl=new ArrayList<Item>();
-            while(rs.next()) {
-                Item res=new Item();
-                res.setId(rs.getLong(1));
-                res.setNev(rs.getString(2));
-                res.setInfo(rs.getString(3));
-                res.setMennyiseg(rs.getLong(4)); 
-                locl.add(res);
-            }
-            return locl;
-        } catch (SQLException ex) {
-            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
-        }
-        return null;
     }
-
-}
 
