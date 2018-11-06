@@ -30,15 +30,19 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");  
-        EmpireServiceObjectImpl empservice=new EmpireServiceObjectImpl();
-        HeroService heroservice=new HeroService();
-        User current=(User)request.getSession().getAttribute("user");
-        List<Empire> empires=empservice.getByUser(current.getId());
-        List<Hero> heroes=heroservice.getHeroByUser(current.getId());
-        request.setAttribute("empires", empires);
-        request.setAttribute("heroes", heroes);
-        request.getRequestDispatcher("/empires.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        if (true) 
+        {
+            EmpireServiceObjectImpl empservice=new EmpireServiceObjectImpl();
+            HeroService heroservice=new HeroService();
+            User current=(User)request.getSession().getAttribute("user");
+            List<Empire> empires=empservice.getByUser(current.getId());
+            List<Hero> heroes=heroservice.getHeroByUser(current.getId());
+            request.setAttribute("empires", empires);
+            request.setAttribute("heroes", heroes);
+            request.getRequestDispatcher("/empires.jsp").forward(request, response);
+        }
+
 
     }
 

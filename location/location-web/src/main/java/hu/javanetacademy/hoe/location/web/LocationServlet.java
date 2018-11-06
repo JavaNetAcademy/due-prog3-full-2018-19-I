@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import hu.javanetacademy.hoe.location.service.object.LocationService;
 import hu.javanetacademy.hoe.empire.service.object.EmpireServiceObjectImpl;
 import hu.javanetacademy.hoe.location.dao.model.Location;
+import hu.javanetacademy.hoe.user.dao.model.User;
 import java.util.List;
 
 /**
@@ -30,13 +31,22 @@ public class LocationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        LocationService locserv = new LocationService();
         EmpireServiceObjectImpl empserv =new EmpireServiceObjectImpl();
-        long sel= Long.parseLong(request.getParameter("selectedEmpire"));
-        List<Location> locations=locserv.getByEmpire(sel);
-        request.getSession().setAttribute("curremp",empserv.get(sel));
-        request.setAttribute("locations", locations);
-        request.getRequestDispatcher("/locations.jsp").forward(request, response);
+        if (request.getParameter("select")!=null) 
+        {
+            LocationService locserv = new LocationService();         
+            long sel= Long.parseLong(request.getParameter("selectedEmpire"));
+            List<Location> locations=locserv.getByEmpire(sel);
+            request.getSession().setAttribute("curremp",empserv.get(sel));
+            request.setAttribute("locations", locations);
+            request.getRequestDispatcher("/locations.jsp").forward(request, response);
+        }
+        if (request.getParameter("manage")!=null) {
+            User loggedInUser=(User)request.getSession().getAttribute("user");
+            List<Empire> empires=empserv.getByUser(loggedInUser.getId());
+            request.setAttribute("empires", empires);
+            request.getRequestDispatcher("/user/empire").forward(request, response);
+        }
     }
 
     @Override

@@ -25,7 +25,12 @@
                         </c:forEach>
                     </select>
                 </td>
-                <td><input type="submit" value="Select"</td>
+                <td><input type="submit" name="select" value="Select"></td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="submit" name="manage" value="Manage empires">
+                </td>
             </tr>
         </table>
         </form>        

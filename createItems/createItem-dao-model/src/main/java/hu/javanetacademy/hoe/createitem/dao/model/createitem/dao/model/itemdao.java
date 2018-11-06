@@ -13,12 +13,12 @@ import java.util.List;
 <<<<<<< HEAD
  * 
  */
-public interface itemdao {
+//public interface itemdao {
     
-=======
- */
+//=======
+// */
 public interface itemdao {
->>>>>>> origin/master
+//>>>>>>> origin/master
     public List<item> getAll();
     public item getById(long id);
     public item getByName(String name);

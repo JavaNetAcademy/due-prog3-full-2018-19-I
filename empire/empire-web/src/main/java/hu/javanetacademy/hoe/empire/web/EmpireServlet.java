@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import hu.javanetacademy.hoe.location.service.object.LocationService;
 import hu.javanetacademy.hoe.empire.service.object.EmpireServiceObjectImpl;
 import hu.javanetacademy.hoe.location.dao.model.Location;
+import hu.javanetacademy.hoe.user.dao.model.User;
 import java.util.List;
 
 /**
@@ -30,11 +31,15 @@ public class EmpireServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        LocationService locserv = new LocationService();
+        //LocationService locserv = new LocationService(); ez sem kell ide
         EmpireServiceObjectImpl empserv =new EmpireServiceObjectImpl();
-        long sel= Long.parseLong(request.getParameter("selectedEmpire"));
-        List<Empire> empires=locserv.getByEmpire(sel);
-        request.getSession().setAttribute("curremp",empserv.get(sel));
+        //long sel= Long.parseLong(request.getParameter("selectedEmpire"));
+        //List<Empire> empires=locserv.getByEmpire(sel); Empire listába nem megy bele a location :))
+        //request.getSession().setAttribute("curremp",empserv.get(sel)); Ez meg nem kell ide 
+        
+        User loggedInUser= (User)request.getSession().getAttribute("user"); //lekéri az aktuálisan bejelentkezett felhasználót
+        List<Empire> empires=empserv.getByUser(loggedInUser.getId());
+        
         request.setAttribute("empires", empires);
         request.getRequestDispatcher("/empire.jsp").forward(request, response);
     }
