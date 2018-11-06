@@ -9,7 +9,7 @@ public interface ItemDAOInterface {
     public Item getById(long id);
     public Item create(Item item);
     public Item getByName(String name);
-    public Item modify(long id);
+    public Item modify(long id, Item item);
     public Item delete(long id);
     public List<Item> getByEmpire(long id);
 }

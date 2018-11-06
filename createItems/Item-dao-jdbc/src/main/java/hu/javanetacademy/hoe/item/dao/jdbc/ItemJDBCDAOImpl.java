@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  *
  * @author Nagy Adam
  */
-public class ItemJDBCDAOImpl {
+public class ItemJDBCDAOImpl implements ItemDAOInterface {
         private Connection con;
     
     public ItemJDBCDAOImpl() {
@@ -35,90 +35,92 @@ public class ItemJDBCDAOImpl {
         }
     }
     
-    @Override
-    public Item create (Item pLocation){
+        @Override
+    public Item create (Item item){
         try {
             PreparedStatement ps=con.prepareStatement("INSERT INTO location (name, description, empid) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1,pLocation.getName());
-            ps.setString(2,pLocation.getDesc());
-            ps.setLong(3,pLocation.getEmpid());
+            ps.setLong(1,item.getId());
+            ps.setString(2,item.getNev());
+            ps.setString(3,item.getInfo());
+            ps.setLong(4,item.getMennyiseg());
             ps.executeUpdate();
             ResultSet rs=ps.getGeneratedKeys();
             if (rs.next()) {
-                pLocation.setId(rs.getLong(1));
-                return pLocation;
+               item.setId(rs.getLong(1));
+                return item;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(LocationJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
+            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
         }
         return null;
     }
 
     @Override
-    public Location modify(long pOldLocationId, Location pNewLocation) {
+    public Item modify(long id, Item item) {
         try {
             PreparedStatement ps=con.prepareStatement("UPDATE location SET name=?, description=? WHERE id=?");
-            ps.setString(1, pNewLocation.getName());
-            ps.setString(2, pNewLocation.getDesc());
-            ps.setLong(3, pOldLocationId);
+            ps.setLong(1,item.getId());
+            ps.setString(2,item.getNev());
+            ps.setString(3,item.getInfo());
+            ps.setLong(4,item.getMennyiseg());
             ps.executeUpdate();
         } catch (Exception ex) {
-            Logger.getLogger(LocationJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
     @Override
-    public Location delete(long LocationId) {
+    public Item delete(long id) {
         PreparedStatement ps;
         try {
             ps = con.prepareStatement("DELETE FROM location where id=?");
-            ps.setLong(1,LocationId);
+            ps.setLong(1,id);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(LocationJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;      
     }
 
     @Override
-    public Location get(long pLocationId) {
+    public Item get(long Id) {
         try {
             PreparedStatement ps=con.prepareStatement("SELECT id,name,description,empid FROM location where id=?");
-            ps.setLong(1, pLocationId);
+            ps.setLong(1, Id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()) {
-                Location res=new Location();
+                Item res=new Item();
                 res.setId(rs.getLong(1));
-                res.setName(rs.getString(2));
-                res.setDesc(rs.getString(3));
-                res.setEmpid(rs.getLong(4));
+                res.setNev(rs.getString(2));
+                res.setInfo(rs.getString(3));
+                res.setMennyiseg(rs.getLong(4));
                 return res;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(LocationJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
+            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
         }
         return null;
     }
 
     @Override
-    public List<Location> getByEmpire(long pEmpireId) {
+    public List<Item> getByEmpire(long id) {
                 try {
             PreparedStatement ps=con.prepareStatement("SELECT id,name,description,empid FROM location where empid=?");
-            ps.setLong(1, pEmpireId);
+            ps.setLong(1, id);
             ResultSet rs=ps.executeQuery();
-            List<Location> locl=new ArrayList<Location>();
+            List<Item> locl=new ArrayList<Item>();
             while(rs.next()) {
-                Location res=new Location();
+                Item res=new Item();
                 res.setId(rs.getLong(1));
-                res.setName(rs.getString(2));
-                res.setDesc(rs.getString(3));
-                res.setEmpid(rs.getLong(4)); 
+                res.setNev(rs.getString(2));
+                res.setInfo(rs.getString(3));
+                res.setMennyiseg(rs.getLong(4)); 
                 locl.add(res);
             }
             return locl;
         } catch (SQLException ex) {
-            Logger.getLogger(LocationJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
+            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
         }
         return null;
     }
