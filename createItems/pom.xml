@@ -12,5 +12,6 @@
         <module>createItem-dao-model</module>
         <module>Item-dao-jdbc</module>
         <module>item-service-object</module>
+        <module>items-web</module>
     </modules>
 </project>
