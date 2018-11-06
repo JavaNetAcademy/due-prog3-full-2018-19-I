@@ -4,15 +4,30 @@
  * and open the template in the editor.
  */
 package hu.javanetacademy.hoe.item.service.object;
-package hu.javanetacademy.hoe..service.object;
-import hu.javanetacademy.hoe.location.dao.jdbc.LocationJDBCDAOImpl;
-import hu.javanetacademy.hoe.location.dao.model.Location;
-import hu.javanetacademy.hoe.location.dao.model.LocationDAOInterface;
+import hu.javanetacademy.hoe.item.dao.jdbc.ItemJDBCDAOImpl;
+import hu.javanetacademy.hoe.item.dao.model.Item;
+import hu.javanetacademy.hoe.item.dao.model.ItemDAOInterface;
 import java.util.List;
 /**
  *
  * @author Nagy Adam
  */
 public class ItemService {
-    
+     ItemDAOInterface locdb=new ItemJDBCDAOImpl();    
+    public void create (String nev,String info, long mennyiseg) {
+        Item loc=new Item();
+        loc.setNev(nev);
+        loc.setInfo(info);
+        loc.setMennyiseg(mennyiseg);
+        locdb.create(loc);
+    }
+    public void delete (long id)
+    {
+        locdb.delete(id);
+    }
+   
+    public Item modify (long id, Item newdata)
+    {
+        return locdb.modify(id, newdata);
+    }
 }
