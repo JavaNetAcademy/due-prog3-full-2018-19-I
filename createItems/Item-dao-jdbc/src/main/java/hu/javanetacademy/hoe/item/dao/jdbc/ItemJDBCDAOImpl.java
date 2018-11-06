@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hu.javanetacademy.hoe.Item.dao.jdbc;
+package hu.javanetacademy.hoe.item.dao.jdbc;
 import hu.javanetacademy.hoe.createitem.dao.model.Item;
-import hu.javanetacademy.hoe.item.dao.model.ItemDAOInterface;
+import hu.javanetacademy.hoe.createitem.dao.model.ItemDAOInterface;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
