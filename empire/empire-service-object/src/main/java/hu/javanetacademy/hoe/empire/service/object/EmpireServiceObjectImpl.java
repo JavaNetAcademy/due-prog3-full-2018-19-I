@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author thejumper203
+ * @author kovacsmate96
  */
 public class EmpireServiceObjectImpl {
     EmpireDAOInterface dao = new EmpireJDBCDAOImpl();

@@ -7,7 +7,7 @@ package hu.javanetacademy.hoe.empire.dao.model;
 
 /**
  *
- * @author thejumper203
+ * @author kovacsmate96
  */
 public class Empire {
     private long id,userid;

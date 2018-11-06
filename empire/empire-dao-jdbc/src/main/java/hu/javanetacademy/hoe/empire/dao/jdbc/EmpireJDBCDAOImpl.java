@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author thejumper203
+ * @author kovacsmate96
  */
 public class EmpireJDBCDAOImpl implements EmpireDAOInterface{
 
@@ -38,17 +39,50 @@ public class EmpireJDBCDAOImpl implements EmpireDAOInterface{
     
     @Override
     public Empire create(Empire pEmpire) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps=con.prepareStatement("INSERT INTO empire (name,description,level,userid) VALUES (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1,pEmpire.getName());
+            ps.setString(2,pEmpire.getDescription());
+            ps.setLong(3,pEmpire.getLevel());
+            ps.setLong(4,pEmpire.getUserid());
+            ps.executeUpdate();
+            ResultSet rs=ps.getGeneratedKeys();
+            if (rs.next()) {
+                pEmpire.setId(rs.getLong(1));
+                return pEmpire;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpireJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return null;
     }
 
     @Override
     public Empire modify(long pOldEmpireId, Empire pNewEmpire) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement ps=con.prepareStatement("UPDATE empire SET name=?, description=?, level=? WHERE id=?");
+            ps.setString(1, pNewEmpire.getName());
+            ps.setString(2, pNewEmpire.getDescription());
+            ps.setLong(3, pNewEmpire.getLevel());
+            ps.setLong(4, pOldEmpireId);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpireJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     @Override
     public Empire delete(long pEmpireId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement("DELETE FROM empire where id=?");
+            ps.setLong(1,pEmpireId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpireJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;    
     }
 
     @Override

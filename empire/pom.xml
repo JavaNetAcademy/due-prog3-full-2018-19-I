@@ -12,5 +12,6 @@
         <module>empire-dao-model</module>
         <module>empire-dao-jdbc</module>
         <module>empire-service-object</module>
+        <module>empire-web</module>
     </modules>
 </project>

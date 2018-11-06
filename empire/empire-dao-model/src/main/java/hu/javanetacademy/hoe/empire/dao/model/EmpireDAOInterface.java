@@ -14,7 +14,7 @@ import hu.javanetacademy.hoe.location.dao.model.Location;
 
 /**
  *
- * @author thejumper203
+ * @author kovacsmate96
  */
 public interface EmpireDAOInterface {
     public Empire create(Empire pEmpire);
