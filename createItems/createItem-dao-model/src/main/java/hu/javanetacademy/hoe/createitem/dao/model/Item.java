@@ -3,30 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hu.javanetacademy.hoe.createitem.dao.model.createitem.dao.model;
+package hu.javanetacademy.hoe.createitem.dao.model;
 
 /**
  *
  * @author Nagy Adam
  */
-public class item {
+public class Item {
     // Azonosító
     private long id;
     // Neve
     private String nev;
-    // Leírás
+    // Leírás 
     private String info;
-    // Támadó erő
+    //Menyiség
     private long mennyiseg;
 
-    public item(long id, String nev, String info, long mennyiseg) {
+    public Item(long id, String nev, String info, long mennyiseg) {
         this.id = id;
         this.nev = nev;
         this.info = info;
         this.mennyiseg = mennyiseg;
     }
 
-    public item() {
+    public Item() {
     }
 
     public long getId() {
