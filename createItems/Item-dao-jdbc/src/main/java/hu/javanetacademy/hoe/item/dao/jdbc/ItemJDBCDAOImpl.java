@@ -37,7 +37,7 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         @Override
     public Item create (Item item){
         try {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO location (nev, info, mennyiseg) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps=con.prepareStatement("INSERT INTO item (nev, info, mennyiseg) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,item.getNev());
             ps.setString(2,item.getInfo());
             ps.setLong(4,item.getMennyiseg());
@@ -81,7 +81,7 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
     @Override
     public Item getById(long Id) {
         try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,nev,info, FROM location where id=?");
+            PreparedStatement ps=con.prepareStatement("SELECT id,nev,info, FROM Item where id=?");
             ps.setLong(1, Id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()) {
