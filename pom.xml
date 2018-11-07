@@ -15,6 +15,7 @@
         <module>empire</module>
         <module>building</module>
         <module>createItems</module>
+        <module>heroClass</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
