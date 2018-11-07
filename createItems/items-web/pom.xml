@@ -12,7 +12,8 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>item-service-object</artifactId>
-            <version>${project.version}</version>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>hu.javanetacademy.hoe</groupId>
@@ -34,6 +35,18 @@
             <groupId>hu.javanetacademy.hoe.hero</groupId>
             <artifactId>hero-service-object</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>hu.javanetacademy.hoe</groupId>
+            <artifactId>empire-service-object</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>hu.javanetacademy.hoe.createItem.dao.model</groupId>
+            <artifactId>createItem-dao-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

@@ -7,6 +7,7 @@ package hu.javanetacademy.hoe.item.service.object;
 import hu.javanetacademy.hoe.item.dao.jdbc.ItemJDBCDAOImpl;
 import hu.javanetacademy.hoe.createitem.dao.model.Item;
 import hu.javanetacademy.hoe.createitem.dao.model.ItemDAOInterface;
+import java.util.List;
 /**
  *
  * @author Nagy Adam

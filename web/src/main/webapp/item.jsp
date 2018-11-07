@@ -13,17 +13,17 @@
     <body>
         <form action="/hoe/user/items/new" method="post">
             <fieldset>
-                <legend>New Item</legend>
+                <legend>Új Item </legend>
                 <div>
-                    <label>Item name</label>
+                    <label>Item név: </label>
                     <input name="nev">
                 </div>
                 <div>
-                    <label>Description </label>
+                    <label>Leírás: </label>
                     <input name="info">
                 </div>
                 <div>
-                <label>Count</label>
+                <label>Mennyiség: </label>
                 <input name="mennyiseg">
                 </div>
                 <div><input type="submit" value="Hozzáad"></div>
