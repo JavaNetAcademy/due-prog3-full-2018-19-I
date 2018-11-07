@@ -57,11 +57,11 @@ public class NewItemServlet extends HttpServlet {
          ItemService ls=new ItemService();
        String name=request.getParameter("nev");
        String desc=request.getParameter("info");
-        String meny =request.getParameter("menyiseg");
+        String meny =request.getParameter("mennyiseg");
         ls.create(name,desc,Long.parseLong(meny) );
        
     }
-
+ 
     /**
      * Returns a short description of the servlet.
      *

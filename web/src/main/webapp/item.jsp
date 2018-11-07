@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <title>Create Item/title></title>
+         <title>Create Item</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
