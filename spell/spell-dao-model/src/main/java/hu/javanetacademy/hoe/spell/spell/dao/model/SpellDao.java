@@ -12,10 +12,9 @@ import java.util.List;
  * @author Attila
  */
 public interface SpellDao {
-    public Spell create(Spell newSpell);
-    public Spell modify(long pOldSpellId, Spell spellMod);
-    public Spell delete(long spellId);
-
-    public Spell get(long spellId);
-    public List<Spell> getByHero(long heroid);
+    public Spell create(Spell pSpell);
+    public Spell modify(long pOldSpellId, Spell pNewSpell);
+    public Spell delete(long pSpellId);
+    public Spell get(long pSpellId);
+    public List<Spell> getByHero(long pHeroId);
 }

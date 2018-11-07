@@ -10,7 +10,7 @@ package hu.javanetacademy.hoe.spell.spell.dao.model;
  * @author Attila
  */
 public class Spell {
-    // Azonosító
+    // Azonosító, egyéni + hős akihez rendelve van a képesség
     private long id,heroid;
     // Neve
     private String name;
