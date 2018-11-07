@@ -1,6 +1,5 @@
 <%-- 
     Document   : item
-    Created on : 2018.11.07., 14:25:03
     Author     : Nagy Adam
 --%>
 
@@ -22,6 +21,10 @@
                 <div>
                     <label>Description </label>
                     <input name="info">
+                </div>
+                <div>
+                <label>Count</label>
+                <input name="mennyiseg">
                 </div>
                 <div><input type="submit" value="Hozzáad"></div>
             </fieldset>

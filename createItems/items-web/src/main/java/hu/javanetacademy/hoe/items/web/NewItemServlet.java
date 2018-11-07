@@ -58,7 +58,7 @@ public class NewItemServlet extends HttpServlet {
        String name=request.getParameter("nev");
        String desc=request.getParameter("info");
         String meny =request.getParameter("menyiseg");
-        ls.create(name,desc,Long.parseLong(meny));
+        ls.create(name,desc,Long.parseLong(meny) );
        
     }
 
