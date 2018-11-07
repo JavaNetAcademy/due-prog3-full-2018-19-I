@@ -15,7 +15,7 @@ public class UserServiceObjectImpl {
         User user = dao.login(pName, pPassword);
         if(user!=null)
             return user;
-        throw new CustomException();        
+        throw new CustomException("Wrong username or password!");        
     }
     
     public User registration(String pName, String pPassword){
@@ -23,7 +23,7 @@ public class UserServiceObjectImpl {
         if(avb == null){
             return dao.registration(pName, pPassword);
         }    
-        throw new CustomException();
+        throw new CustomException("The username already exists!");
     }
         
 }

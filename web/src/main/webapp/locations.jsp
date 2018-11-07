@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Locations in <u>${curremp.name}</u> (<i>level ${curremp.level}</i>)</h1>
+        <h3><q><i>${curremp.description}</i></q></h3>
         <table border="1">
             <tr>
                 <th>Location name</th>
@@ -45,7 +46,7 @@
                     </select>
                     </td> 
                     <td>
-                        <input type="submit" name="delete" value="Delete">
+                        <input type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure you want to delete this location?')">
                     </td>
                 </tr>
             </table>
@@ -60,7 +61,7 @@
                     <input type="text" name="newdesc">
                 </div>
                 <div>
-                    <input type="submit" name="modify" value="Modify">
+                    <input type="submit" name="modify" value="Modify" onclick="return confirm('Are you sure you want to modify this location?')">
                 </div>
             </fieldset>
         </form>

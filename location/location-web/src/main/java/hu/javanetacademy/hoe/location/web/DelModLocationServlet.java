@@ -42,10 +42,10 @@ public class DelModLocationServlet extends HttpServlet {
                 Location oldloc=ls.get(selected);
                 Location newloc= new Location();
                 newloc=oldloc;
-                if (request.getParameter("newname").equals("")) {
+                if (!request.getParameter("newname").equals("")) {
                     newloc.setName(request.getParameter("newname"));
                 }
-                if (request.getParameter("newdesc").equals("")) {
+                if (!request.getParameter("newdesc").equals("")) {
                     newloc.setDesc(request.getParameter("newdesc"));     
                 }
                 ls.modify(selected, newloc);
