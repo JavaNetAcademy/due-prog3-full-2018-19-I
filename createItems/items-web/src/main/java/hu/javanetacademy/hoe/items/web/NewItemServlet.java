@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+package hu.javanetacademy.hoe.items.web;
+import hu.javanetacademy.hoe.item.service.object.ItemService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nagy Adam
  */
-@WebServlet(urlPatterns = {"/ItemServlet"})
-public class ItemServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/user/items/new"})
+public class NewItemServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,23 +24,7 @@ public class ItemServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ItemServlet</title>");            
-            out.println("</head>");
-            out.println("<body>"); 
-            out.println("<h1>Servlet ItemServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
+  
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -57,8 +37,10 @@ public class ItemServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      response.setContentType("text/html;charset=UTF-8");
+        getServletContext().getRequestDispatcher("/item.jsp").forward(request, response);
         
+     
     }
 
     /**
@@ -72,7 +54,12 @@ public class ItemServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         ItemService ls=new ItemService();
+       String name=request.getParameter("nev");
+       String desc=request.getParameter("info");
+        String meny =request.getParameter("menyiseg");
+        ls.create(name,desc,Long.parseLong(meny));
+       
     }
 
     /**
