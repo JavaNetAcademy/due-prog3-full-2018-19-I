@@ -29,8 +29,8 @@ public class LocationJDBCDAOImpl implements LocationDAOInterface{
     public LocationJDBCDAOImpl() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://192.168.1.100/hoe?useSSL=false", "hoe", "hoe");
-        } catch (Exception e) {
+            con=DriverManager.getConnection("jdbc:mysql://localhost/hoe?useSSL=false", "hoe", "hoe");
+            } catch (Exception e) {
             System.exit(100);
         }
     }

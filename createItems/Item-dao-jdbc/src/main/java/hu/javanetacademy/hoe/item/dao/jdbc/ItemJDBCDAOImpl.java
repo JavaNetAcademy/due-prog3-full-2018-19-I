@@ -29,7 +29,7 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
     public ItemJDBCDAOImpl() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://192.168.1.100/hoe?useSSL=false", "hoe", "hoe");
+            con=DriverManager.getConnection("jdbc:mysql://localhost/hoe?useSSL=false", "hoe", "hoe");
         } catch (Exception e) {
             System.exit(100);
         }
@@ -55,7 +55,7 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
     @Override
     public Item modify(long id, Item item) {
         try {
-            PreparedStatement ps=con.prepareStatement("UPDATE Item SET name=?, description=? WHERE id=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE item SET name=?, description=? WHERE id=?");
               ps.setString(1, item.getNev());
             ps.setString(2, item.getInfo());
             ps.setLong(3, item.getMennyiseg());
@@ -70,7 +70,7 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
     public Item delete(long id) {
         PreparedStatement ps;
         try {
-            ps = con.prepareStatement("DELETE FROM Item where id=?");
+            ps = con.prepareStatement("DELETE FROM item where id=?");
             ps.setLong(1,id);
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -81,7 +81,7 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
     @Override
     public Item getById(long Id) {
         try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,nev,info, FROM Item where id=?");
+            PreparedStatement ps=con.prepareStatement("SELECT id,nev,info, FROM item where id=?");
             ps.setLong(1, Id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()) {
