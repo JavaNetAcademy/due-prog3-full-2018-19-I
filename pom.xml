@@ -16,6 +16,8 @@
         <module>building</module>
         <module>createItems</module>
         <module>heroClass</module>
+        <module>vehicle</module>
+        <module>vehicle</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

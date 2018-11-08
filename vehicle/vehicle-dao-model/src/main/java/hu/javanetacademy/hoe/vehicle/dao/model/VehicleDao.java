@@ -14,7 +14,7 @@ import java.util.List;
 public interface VehicleDao {
     public List<Vehicle> getAll();
     public Vehicle getById(long id);
-    public Vehicle getByName(String nev);
+    public Vehicle getByName(String name);
     public Vehicle modify(long id,long speed);
     public Vehicle delete(long id);
 }

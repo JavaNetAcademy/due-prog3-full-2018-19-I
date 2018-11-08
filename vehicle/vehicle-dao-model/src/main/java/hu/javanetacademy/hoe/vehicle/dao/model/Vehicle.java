@@ -19,13 +19,11 @@ public class Vehicle {
     // Sebesseg
     private long speed;
 
-    public Vehicle(long id, String nev, String info, long speed) {
+    public Vehicle(long id, String name, String info, long speed) {
         this.id = id;
-        this.name = nev;
+        this.name = name;
         this.info = info;
         this.speed = speed;
-    }
-    public Vehicle() {
     }
     
     public long getId() {
