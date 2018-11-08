@@ -21,18 +21,24 @@ import hu.javanetacademy.hoe.spell.service.object.spell.service.object.SpellServ
  *
  * @author Attila
  */
-@WebServlet(urlPatterns = {"/spell"})
-public class SpellServlet extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/spellRemove"})
+public class SpellServletRemove extends HttpServlet {
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        SpellServiceObjectImpl spellserv =new SpellServiceObjectImpl();
-        List<Spell> spells=spellserv.getAll();
-        request.setAttribute("spells", spells);
-        request.getRequestDispatcher("/spell.jsp").forward(request, response);
+      response.setContentType("text/html;charset=UTF-8");
+        getServletContext().getRequestDispatcher("/spell.jsp").forward(request, response);
         
+     
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        SpellServiceObjectImpl ls=new SpellServiceObjectImpl();
+        String id=request.getParameter("id");
+        ls.delete(Long.parseLong(id));
+       
     }
 
     @Override

@@ -39,6 +39,10 @@ public class SpellServiceObjectImpl {
     {
         return dao.get(id);
     }
+    public List<Spell> getAll()
+    {
+        return dao.getAll();
+    }
     public List<Spell> getByHero(long heroid)
     {
         return dao.getByHero(heroid);

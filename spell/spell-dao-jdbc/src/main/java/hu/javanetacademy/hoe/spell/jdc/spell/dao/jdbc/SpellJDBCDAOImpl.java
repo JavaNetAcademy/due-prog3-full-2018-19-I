@@ -109,7 +109,29 @@ public class SpellJDBCDAOImpl implements SpellDao {
         }
         return null;
     }
-
+    
+    @Override
+    public List<Spell> getAll() {
+        List<Spell> resAll = new ArrayList<>();
+        try{
+            PreparedStatement ps =con.prepareStatement("SELECT id,heroid,name,description,attpower,deffpower FROM spell ORDER BY name");
+            ResultSet rs= ps.executeQuery();
+            while(rs.next()){
+                Spell res = new Spell();
+                res.setId(rs.getLong(1));
+                res.setHeroid(rs.getLong(2));
+                res.setName(rs.getString(3));
+                res.setDescription(rs.getString(4));
+                res.setAttpower(rs.getInt(5));         
+                res.setDeffpower(rs.getLong(6));
+                resAll.add(res);
+            }
+        }
+        catch (SQLException ex) {
+             Logger.getLogger(SpellJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resAll;
+    }
     @Override
     public List<Spell> getByHero(long pHeroId) {
         List<Spell> resAll = new ArrayList<>();

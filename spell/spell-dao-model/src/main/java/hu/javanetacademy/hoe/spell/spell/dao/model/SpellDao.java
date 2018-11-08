@@ -16,5 +16,6 @@ public interface SpellDao {
     public Spell modify(long pOldSpellId, Spell pNewSpell);
     public Spell delete(long pSpellId);
     public Spell get(long pSpellId);
+    public List<Spell> getAll();
     public List<Spell> getByHero(long pHeroId);
 }
