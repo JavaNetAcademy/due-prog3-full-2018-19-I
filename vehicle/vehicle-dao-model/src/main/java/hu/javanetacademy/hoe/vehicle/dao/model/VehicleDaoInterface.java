@@ -11,10 +11,10 @@ import java.util.List;
  *
  * @author ttama
  */
-public interface VehicleDao {
-    public List<Vehicle> getAll();
+public interface VehicleDaoInterface {
+    //public List<Vehicle> getAll();
     public Vehicle getById(long id);
-    public Vehicle getByName(String name);
-    public Vehicle modify(long id,long speed);
+    public Vehicle create(Vehicle vehicle);
+    public Vehicle modify(long id, Vehicle vehicle);
     public Vehicle delete(long id);
 }

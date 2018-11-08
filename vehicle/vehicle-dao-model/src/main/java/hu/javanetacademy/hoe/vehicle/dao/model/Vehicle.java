@@ -25,6 +25,10 @@ public class Vehicle {
         this.info = info;
         this.speed = speed;
     }
+
+    public Vehicle() {
+        
+    }
     
     public long getId() {
         return id;
