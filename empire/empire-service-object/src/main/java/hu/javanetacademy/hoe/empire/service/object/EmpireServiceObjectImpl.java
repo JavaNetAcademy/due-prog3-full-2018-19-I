@@ -17,6 +17,14 @@ import java.util.List;
 public class EmpireServiceObjectImpl {
     EmpireDAOInterface dao = new EmpireJDBCDAOImpl();
     
+    public void create (String name,String descr, int level) {
+        Empire emp=new Empire();
+        emp.setName(name);
+        emp.setDescription(descr);
+        emp.setLevel(level);
+        dao.create(emp);
+    }
+    
     public List<Empire> getByUser(long userid)
     {
         return dao.getByUser(userid);
@@ -29,5 +37,12 @@ public class EmpireServiceObjectImpl {
     {
         return dao.get(id);
     }
-    
+    public Empire modify (long oldid, Empire newemp)
+    {
+        return dao.modify(oldid, newemp);
+    }
+    public void delete (long id)
+    {
+        dao.delete(id);
+    }
 }

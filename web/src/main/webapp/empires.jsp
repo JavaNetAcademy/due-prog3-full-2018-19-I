@@ -13,6 +13,25 @@
     </head>
     <body>
         <h1>Welcome ${user.name}!</h1>
+        <h2>New Empire</h2>
+        <form action="/hoe/user/empires/new" method="post">
+            <fieldset>
+                <legend>New Empire</legend>
+                <div>
+                    <label>Empire name</label>
+                    <input name="pname">
+                </div>
+                <div>
+                    <label>Description </label>
+                    <input name="pdesc">
+                </div>
+                <div>
+                    <label>Level</label>
+                    <input name="plevel">
+                </div>
+                <div><input type="submit" value="Add"></div>
+            </fieldset>
+        </form>
         <h2>Empires</h2>
         <form action="/hoe/user/locations" method="post">
         <table>
@@ -33,7 +52,7 @@
                 </td>
             </tr>
         </table>
-        </form>        
+        </form>     
         <h2>Heroes</h2>
         <table border="1">
             <c:forEach var="hero" items="${heroes}">

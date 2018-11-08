@@ -30,7 +30,7 @@ public class EmpireJDBCDAOImpl implements EmpireDAOInterface{
     public EmpireJDBCDAOImpl() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost/hoe?useSSL=false", "hoe", "hoe");
+            con=DriverManager.getConnection("jdbc:mysql://192.168.1.100/hoe?useSSL=false", "hoe", "hoe");
         }
         catch(Exception e){
             System.exit(100);
