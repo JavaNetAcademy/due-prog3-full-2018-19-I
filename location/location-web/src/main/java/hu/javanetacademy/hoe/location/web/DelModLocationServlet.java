@@ -6,6 +6,7 @@ package hu.javanetacademy.hoe.location.web;
  * and open the template in the editor.
  */
 
+import hu.javanetacademy.hoe.base.util.CustomException;
 import hu.javanetacademy.hoe.location.dao.model.Location;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,7 +39,8 @@ public class DelModLocationServlet extends HttpServlet {
         LocationService ls=new LocationService();
         long selected = Long.parseLong(request.getParameter("selectedLocation"));
         if (request.getParameter("modify")!=null) {
-            if (request.getParameter("newname")!=null || request.getParameter("newdesc")!=null) {
+            try {
+                if (request.getParameter("newname")!=null || request.getParameter("newdesc")!=null) {
                 Location oldloc=ls.get(selected);
                 Location newloc= new Location();
                 newloc=oldloc;
@@ -49,6 +51,10 @@ public class DelModLocationServlet extends HttpServlet {
                     newloc.setDesc(request.getParameter("newdesc"));     
                 }
                 ls.modify(selected, newloc);
+                }
+            } catch (CustomException ex) {
+                request.setAttribute("errormessage", ex.getMessage());
+                request.getRequestDispatcher("/errorpage.jsp").forward(request, response);
             }
         }
         if (request.getParameter("delete")!=null) {

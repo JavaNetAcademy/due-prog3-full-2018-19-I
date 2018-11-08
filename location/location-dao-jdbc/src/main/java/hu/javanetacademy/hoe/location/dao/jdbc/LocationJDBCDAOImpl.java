@@ -123,4 +123,20 @@ public class LocationJDBCDAOImpl implements LocationDAOInterface{
         return null;
     }
 
+    @Override
+    public boolean checkName(String name,long empid) {
+        try {
+            PreparedStatement ps=con.prepareStatement("SELECT name from location where name=? and empid=?");
+            ps.setString(1,name);
+            ps.setLong(2,empid);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return false;
+    }
+
 }

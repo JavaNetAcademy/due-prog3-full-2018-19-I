@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package hu.javanetacademy.hoe.location.service.object;
+import hu.javanetacademy.hoe.base.util.CustomException;
 import hu.javanetacademy.hoe.location.dao.jdbc.LocationJDBCDAOImpl;
 import hu.javanetacademy.hoe.location.dao.model.Location;
 import hu.javanetacademy.hoe.location.dao.model.LocationDAOInterface;
@@ -16,11 +17,14 @@ public class LocationService {
     LocationDAOInterface locdb=new LocationJDBCDAOImpl();
     
     public void create (String name,String descr, long empid) {
-        Location loc=new Location();
-        loc.setName(name);
-        loc.setDesc(descr);
-        loc.setEmpid(empid);
-        locdb.create(loc);
+        if (!locdb.checkName(name,empid)) {
+            Location loc=new Location();
+            loc.setName(name);
+            loc.setDesc(descr);
+            loc.setEmpid(empid);
+            locdb.create(loc);
+        }
+        else throw new CustomException("This location name already exists in the empire");
     }
     public List<Location> getByEmpire (long empid) {
         return locdb.getByEmpire(empid);
@@ -35,6 +39,9 @@ public class LocationService {
     }
     public Location modify (long oldid, Location newloc)
     {
-        return locdb.modify(oldid, newloc);
+        if (!locdb.checkName(newloc.getName(),newloc.getEmpid())) {
+            return locdb.modify(oldid, newloc);
+        }
+        throw new CustomException("This location name already exists in the empire");
     }
 }

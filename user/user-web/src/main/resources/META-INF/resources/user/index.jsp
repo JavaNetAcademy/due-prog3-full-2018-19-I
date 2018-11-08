@@ -14,7 +14,7 @@
                 </div>
                 <div>
                     <label>Jelszó </label>
-                    <input name="ppassword">
+                    <input type="password" name="ppassword">
                 </div>
                 <div><input type="submit"></div>  
             </fieldset>
@@ -28,7 +28,7 @@
                 </div>
                 <div>
                     <label>Jelszó </label>
-                    <input name="ppassword">
+                    <input type="password" name="ppassword">
                 </div>
                 <div><input type="submit"></div>     
             </fieldset>
