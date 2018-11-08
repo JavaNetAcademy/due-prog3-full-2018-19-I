@@ -139,4 +139,19 @@ public class LocationJDBCDAOImpl implements LocationDAOInterface{
         return false;
     }
 
+    @Override
+    public long getCount(long empid) {
+        try {
+            PreparedStatement ps=con.prepareStatement("select count(*) from location group by empid having empid=?");
+            ps.setLong(1,empid);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()) {
+                return rs.getLong(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LocationJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return -1;
+    }
+
 }

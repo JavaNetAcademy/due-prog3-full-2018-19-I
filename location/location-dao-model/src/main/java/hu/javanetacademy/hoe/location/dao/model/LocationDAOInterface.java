@@ -18,4 +18,5 @@ public interface LocationDAOInterface {
     public Location get(long pLocationId);
     public List<Location> getByEmpire(long pEmpireId);
     public boolean checkName(String name,long empid);
+    public long getCount(long empid);
 }
