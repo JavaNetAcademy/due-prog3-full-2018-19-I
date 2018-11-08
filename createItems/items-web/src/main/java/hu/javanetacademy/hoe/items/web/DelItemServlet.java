@@ -43,7 +43,7 @@ public class DelItemServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        //doGet(request, response);
         ItemService ls = new ItemService();
         long selected = Long.parseLong(request.getParameter("selectedItem"));
         if (request.getParameter("modify")!=null) {
