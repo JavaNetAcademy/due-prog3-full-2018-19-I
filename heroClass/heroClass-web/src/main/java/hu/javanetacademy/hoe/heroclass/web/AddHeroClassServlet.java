@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Norbi
  */
-@WebServlet(urlPatterns = {"/heroclass"})
-public class HeroClassServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/addnewheroclass"})
+public class AddHeroClassServlet extends HttpServlet {
 
 
 
@@ -29,11 +29,23 @@ public class HeroClassServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");   
-        HeroClassServiceObjectImpl heroclassserv =new HeroClassServiceObjectImpl();
-        List<HeroClass> heroclasses=heroclassserv.getAllHeroClasses();
-        request.setAttribute("heroclasses", heroclasses);
-        request.getRequestDispatcher("/heroclass.jsp").forward(request, response);
+         response.setContentType("text/html;charset=UTF-8");
+        getServletContext().getRequestDispatcher("/heroclass.jsp").forward(request, response);
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HeroClassServiceObjectImpl ls = new HeroClassServiceObjectImpl();
+        String userid=request.getParameter("userid");
+        String name=request.getParameter("name");
+        String description=request.getParameter("description");
+        HeroClass newHeroClass = new HeroClass();
+        newHeroClass.setUserid(Long.parseLong(userid));
+        newHeroClass.setName(name);
+        newHeroClass.setDescription(description);
+        ls.create(newHeroClass);
+       
     }
 
     @Override

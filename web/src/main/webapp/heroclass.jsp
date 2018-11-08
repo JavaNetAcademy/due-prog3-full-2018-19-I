@@ -1,8 +1,4 @@
-<%-- 
-    Document   : heroclass
-    Created on : 2018.11.08., 12:56:03
-    Author     : Norbi
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,12 +7,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <form action="/hoe/newheroclass" method="post">
+        <form action="/hoe/addnewheroclass" method="post">
             <fieldset>
                 <legend>New Hero Class </legend>
                 <div>
-                    <label>Hero ID: </label>
-                    <input name="heroid">
+                    <label>User ID: </label>
+                    <input name="userid">
                 </div>
                 <div>
                     <label>Hero Class name: </label>
@@ -28,6 +24,35 @@
                 </div>
                 <div><input type="submit" value="Hozzáad"></div>
             </fieldset>
+            <form action="/hoe/removeheroclass" method="post">
+            <fieldset>
+                <legend>Delete </legend>
+                <div>
+                    <label>Spell ID: </label>
+                    <input name="id">
+                </div>
+                <div><input type="submit" value="Képesség törlése"></div>
+            </fieldset>
+        </form>
+        <form action="/hoe/heroclass" method="get">
+            <fieldset>
+                <legend>All hero classes</legend>
+                <table border="1">
+                    <tr>
+                        <th>Class ID</th>
+                        <th>Class name</th>
+                        <th>Description</th>
+                    </tr>
+                    <c:forEach var="heroclass" items="${heroclasses}">
+                        <tr>
+                            <td>${heroclasses.id}</td>
+                            <td>${heroclasses.name}</td>
+                            <td>${heroclasses.description}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </fieldset>
+        </form>
         </form>
     </body>
 </html>
