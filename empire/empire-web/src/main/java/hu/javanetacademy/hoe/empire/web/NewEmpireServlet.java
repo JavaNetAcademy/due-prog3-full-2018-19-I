@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import hu.javanetacademy.hoe.empire.service.object.EmpireServiceObjectImpl;
+import hu.javanetacademy.hoe.user.dao.model.User;
 /**
  *
  * @author kovacsmate96
@@ -34,8 +35,8 @@ public class NewEmpireServlet extends HttpServlet {
        String name=request.getParameter("pname");
        String desc=request.getParameter("pdesc");
        String level=request.getParameter("plevel");
-       
-       es.create(name,desc,Integer.parseInt(level));
+       User loggedInUser=(User)request.getSession().getAttribute("user");
+       es.create(name,desc,Integer.parseInt(level),loggedInUser.getId());
     }
 
 

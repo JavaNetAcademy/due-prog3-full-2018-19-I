@@ -45,7 +45,7 @@
                     </select>
                     </td> 
                     <td>
-                        <input type="submit" name="delete" value="Delete">
+                        <input type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure you want to delete this location?')">
                     </td>
                 </tr>
             </table>
@@ -60,7 +60,7 @@
                     <input type="text" name="newdesc">
                 </div>
                 <div>
-                    <input type="submit" name="modify" value="Modify">
+                    <input type="submit" name="modify" value="Modify" onclick="return confirm('Are you sure you want to modify this location?')">
                 </div>
             </fieldset>
         </form>

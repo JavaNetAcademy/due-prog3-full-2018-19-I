@@ -17,11 +17,12 @@ import java.util.List;
 public class EmpireServiceObjectImpl {
     EmpireDAOInterface dao = new EmpireJDBCDAOImpl();
     
-    public void create (String name,String descr, int level) {
+    public void create (String name,String descr, int level,long userid) {
         Empire emp=new Empire();
         emp.setName(name);
         emp.setDescription(descr);
         emp.setLevel(level);
+        emp.setUserid(userid);
         dao.create(emp);
     }
     
