@@ -12,5 +12,6 @@
         <module>vehicle-dao-model</module>
         <module>vehicle-dao-jdbc</module>
         <module>vehicle-web</module>
+        <module>vehicle-service-object</module>
     </modules>
 </project>

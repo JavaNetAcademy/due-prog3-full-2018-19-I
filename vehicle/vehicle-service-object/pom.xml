@@ -6,17 +6,12 @@
         <artifactId>vehicle</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>vehicle-web</artifactId>
+    <artifactId>vehicle-service-object</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>hu.javanetacademy.hoe.vehicle.dao.model</groupId>
-            <artifactId>vehicle-dao-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>vehicle-service-object</artifactId>
+            <artifactId>vehicle-dao-jdbc</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
