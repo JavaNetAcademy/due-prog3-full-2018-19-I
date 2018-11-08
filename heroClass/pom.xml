@@ -12,5 +12,6 @@
         <module>heroClass-dao-model</module>
         <module>heroClass-dao-jdbc</module>
         <module>heroClass-service-object</module>
-    </modules>
+    <module>heroClass-web</module>
+  </modules>
 </project>

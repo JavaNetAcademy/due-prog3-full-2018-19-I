@@ -39,9 +39,10 @@ public class HeroClassDaoJDBCImpl implements HeroClassDAOInterface{
     @Override
     public HeroClass create(HeroClass pHeroClass) {
         try {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO heroclass(name, description) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement("INSERT INTO heroclass(name, description,userid) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, pHeroClass.getName());
             ps.setString(2, pHeroClass.getDescription());
+            ps.setLong(3, pHeroClass.getUserid());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -89,7 +90,7 @@ public class HeroClassDaoJDBCImpl implements HeroClassDAOInterface{
             PreparedStatement ps = con.prepareStatement("SELECT id, name, description,userid FROM heroclass WHERE id=?");
             ps.setLong(1, pHeroClassId);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 HeroClass res = new HeroClass();
                 res.setId(rs.getLong(1));
                 res.setName(rs.getString(2));

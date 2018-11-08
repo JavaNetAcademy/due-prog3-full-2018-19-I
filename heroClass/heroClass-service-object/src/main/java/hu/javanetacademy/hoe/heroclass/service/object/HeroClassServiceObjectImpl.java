@@ -19,11 +19,8 @@ import java.util.List;
  */
 public class HeroClassServiceObjectImpl {
     
-    private HeroClassDAOInterface dao;
+    private HeroClassDAOInterface dao = new HeroClassDaoJDBCImpl();
     
-    public HeroClassServiceObjectImpl() {
-        dao = new HeroClassDaoJDBCImpl();
-    }
     
     public HeroClass create(HeroClass pNewHeroClass){
         HeroClass avb = dao.getByName(pNewHeroClass.getName());
