@@ -41,10 +41,10 @@ public class DelModEmpireServlet extends HttpServlet {
                 Empire oldemp=es.get(selected);
                 Empire newemp= new Empire();
                 newemp=oldemp;
-                if (request.getParameter("newname").equals("")) {
+                if (!request.getParameter("newname").equals("")) {
                     newemp.setName(request.getParameter("newname"));
                 }
-                if (request.getParameter("newdesc").equals("")) {
+                if (!request.getParameter("newdesc").equals("")) {
                     newemp.setDescription(request.getParameter("newdesc"));     
                 }
                 es.modify(selected, newemp);
