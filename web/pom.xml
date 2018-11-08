@@ -71,6 +71,26 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>hu.javanetacademy.hoe.heroStatus.web</groupId>
+            <artifactId>heroStatus-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>hu.javanetacademy.hoe.heroStatus.dao.jdbc</groupId>
+            <artifactId>heroStatus-dao-jdbc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>hu.javanetacademy.hoe.heroStatus.dao.model</groupId>
+            <artifactId>heroStatus-dao-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>hu.javanetacademy.hoe.heroStatus.servlet.object</groupId>
+            <artifactId>heroStatus-servlet-object</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
