@@ -12,7 +12,7 @@ package hu.javanetacademy.hoe.vehicle.dao.model;
 public class Vehicle {
     // Azonosito
     private long id;
-    // Nev
+    // Neve
     private String name;
     // Leiras
     private String info;
@@ -27,7 +27,7 @@ public class Vehicle {
     }
     public Vehicle() {
     }
-
+    
     public long getId() {
         return id;
     }
