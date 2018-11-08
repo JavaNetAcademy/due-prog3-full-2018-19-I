@@ -9,9 +9,9 @@
     <artifactId>mobs</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>../../mobs-dao-jdbc</module>
-        <module>../../mobs-dao-model</module>
-        <module>../../mobs-service-object</module>
-        <module>../../mobs-web</module>
+        <module>mobs-dao-jdbc</module>
+        <module>mobs-dao-model</module>
+        <module>mobs-service-object</module>
+        <module>mobs-web</module>
     </modules>
 </project>

@@ -10,13 +10,13 @@ package hu.javanetacademy.hoe.vehicle.dao.model;
  * @author ttama
  */
 public class Vehicle {
-    // Azonosító
+    // Azonosito
     private long id;
-    // Név
+    // Nev
     private String name;
-    // Leírás
+    // Leiras
     private String info;
-    // Sebesség
+    // Sebesseg
     private long speed;
 
     public Vehicle(long id, String nev, String info, long speed) {
