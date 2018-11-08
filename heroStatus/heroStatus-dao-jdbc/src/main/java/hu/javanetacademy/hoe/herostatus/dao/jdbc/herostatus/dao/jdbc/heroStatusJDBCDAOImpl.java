@@ -19,10 +19,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Attila
- */
+
 public class heroStatusJDBCDAOImpl implements heroStatusDao {
 
         private  Connection con;

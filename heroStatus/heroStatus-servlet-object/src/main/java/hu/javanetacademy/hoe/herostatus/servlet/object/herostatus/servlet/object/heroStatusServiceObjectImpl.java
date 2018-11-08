@@ -12,7 +12,7 @@ import hu.javanetacademy.hoe.herostatus.dao.jdbc.herostatus.dao.jdbc.heroStatusJ
 
 /**
  *
- * @author Attila
+ * @author majermarci
  */
 public class heroStatusServiceObjectImpl {
     private heroStatusDao dao = new heroStatusJDBCDAOImpl();

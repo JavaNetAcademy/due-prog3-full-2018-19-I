@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Attila
+ * @author majermarci
  */
 public interface heroStatusDao {
     public heroStatus create(heroStatus pHeroStatus);
