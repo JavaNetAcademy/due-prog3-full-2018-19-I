@@ -6,7 +6,9 @@
         <artifactId>hoe</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>hu.javanetacademy.hoe.vehicle</groupId>
     <artifactId>vehicle</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>vehicle-dao-model</module>
+    </modules>
 </project>

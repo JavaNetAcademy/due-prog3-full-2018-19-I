@@ -3,30 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hu.javanetacademy.hoe.vehicle.dao.model.vehicle.dao.model;
+package hu.javanetacademy.hoe.vehicle.dao.model;
 
 /**
  *
  * @author ttama
  */
-public class vehicle {
-        // Azonosító
+public class Vehicle {
+    // Azonosító
     private long id;
-    // Neve
-    private String nev;
+    // Név
+    private String name;
     // Leírás
     private String info;
-    // sebesseg
+    // Sebesség
     private long speed;
 
-    public vehicle(long id, String nev, String info, long speed) {
+    public Vehicle(long id, String nev, String info, long speed) {
         this.id = id;
-        this.nev = nev;
+        this.name = nev;
         this.info = info;
         this.speed = speed;
     }
 
-    public vehicle() {
+    public Vehicle() {
     }
 
     public long getId() {
@@ -37,12 +37,12 @@ public class vehicle {
         this.id = id;
     }
 
-    public String getNev() {
-        return nev;
+    public String getName() {
+        return name;
     }
 
-    public void setNev(String nev) {
-        this.nev = nev;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getInfo() {
