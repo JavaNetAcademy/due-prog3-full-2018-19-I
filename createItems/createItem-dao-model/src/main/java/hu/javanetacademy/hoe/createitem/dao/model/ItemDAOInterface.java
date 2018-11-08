@@ -8,6 +8,7 @@ public interface ItemDAOInterface {
     public Item getById(long id);
     public Item create(Item item);
     public Item modify(long id, Item item);
+    public Item get(long id);
     public Item delete(long id);
- 
+    public List<Item> getList();
 }

@@ -30,4 +30,14 @@ public class ItemService {
     {
         return locdb.modify(id, newdata);
     }
+
+    public Item get(long id) {
+        return locdb.get(id);
+    }
+     public List<Item> getList () {
+        return locdb.getList();
+    }
+    
+
+    
 }

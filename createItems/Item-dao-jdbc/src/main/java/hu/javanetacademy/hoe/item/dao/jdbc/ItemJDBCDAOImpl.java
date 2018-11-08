@@ -56,11 +56,11 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
     @Override
     public Item modify(long id, Item item) {
         try {
-            PreparedStatement ps=con.prepareStatement("UPDATE item SET name=?, description=? WHERE id=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE item SET name=?, info=?, mennyiseg=? WHERE id=?");
               ps.setString(1, item.getNev());
             ps.setString(2, item.getInfo());
             ps.setLong(3, item.getMennyiseg());
-            ps.setLong(3, id);
+            ps.setLong(4,id);
             ps.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,5 +98,44 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         }
         return null;
     }
+     @Override
+    public Item get(long id) {
+        try {
+            PreparedStatement ps=con.prepareStatement("SELECT id,name,info,mennyiseg FROM item where id=?");
+            ps.setLong(1, id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()) {
+                Item res=new Item();
+                res.setId(rs.getLong(1));
+                res.setNev(rs.getString(2));
+                res.setInfo(rs.getString(3));
+                res.setMennyiseg(rs.getLong(4));
+                return res;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return null;
     }
+    @Override
+    public List<Item> getList() {
+                try {
+            PreparedStatement ps=con.prepareStatement("SELECT id,name,info,mennyiseg FROM item");
+            ResultSet rs=ps.executeQuery();
+            List<Item> locl=new ArrayList<Item>();
+            while(rs.next()) {
+                Item res=new Item();
+                res.setId(rs.getLong(1));
+                res.setNev(rs.getString(2));
+                res.setInfo(rs.getString(3));
+                res.setMennyiseg(rs.getLong(4)); 
+                locl.add(res);
+            }
+            return locl;
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return null;
+    }
+}
 

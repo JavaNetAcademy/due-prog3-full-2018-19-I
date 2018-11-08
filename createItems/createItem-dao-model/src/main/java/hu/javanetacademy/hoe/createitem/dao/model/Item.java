@@ -60,5 +60,9 @@ public class Item {
     public void setMennyiseg(long mennyiseg) {
         this.mennyiseg = mennyiseg;
     }
+
+    public void setName(String parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
