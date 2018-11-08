@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import hu.javanetacademy.hoe.spell.jdc.spell.dao.jdbc.SpellJDBCDAOImpl;
 import hu.javanetacademy.hoe.spell.spell.dao.model.Spell;
+import hu.javanetacademy.hoe.spell.service.object.spell.service.object.SpellServiceObjectImpl;
 /**
  *
  * @author Attila
@@ -24,11 +25,31 @@ import hu.javanetacademy.hoe.spell.spell.dao.model.Spell;
 public class SpellServlet extends HttpServlet {
     
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+      response.setContentType("text/html;charset=UTF-8");
+        getServletContext().getRequestDispatcher("/spell.jsp").forward(request, response);
+        
+     
+    }
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        SpellServiceObjectImpl ls=new SpellServiceObjectImpl();
+        String heroid=request.getParameter("heroid");
+        String name=request.getParameter("name");
+        String description=request.getParameter("description");
+        String attpower=request.getParameter("attpower");
+        String deffpower=request.getParameter("deffpower");
+        Spell newSpell = new Spell();
+        newSpell.setHeroid(Long.parseLong(heroid));
+        newSpell.setName(name);
+        newSpell.setDescription(description);
+        newSpell.setAttpower(Long.parseLong(attpower));
+        newSpell.setDeffpower(Long.parseLong(deffpower));
+        ls.create(newSpell);
+       
     }
-
 
     @Override
     public String getServletInfo() {
