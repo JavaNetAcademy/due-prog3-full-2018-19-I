@@ -1,7 +1,7 @@
 <%-- 
     Document   : herostatus
     Created on : 2018.11.08., 21:50:18
-    Author     : Attila
+    Author     : majermarci / Attila
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,7 +15,7 @@
         <h1>A hősök jelenlegi státusza!</h1>
         <form action="/hoe/herostatus" method="get">
             <fieldset>
-                <legend>Státuszok:</legend>
+                <legend><h1>Státuszok / megjelenítés / módosítása!</h1></legend>
                 <table border="1">
                     <tr>
                         <th><b>Hőd ID<b></th>
@@ -39,6 +39,75 @@
                             <td>${status.agility}</td>
                         </tr>
                     </c:forEach>
+                </table>
+            </fieldset>
+        </form>
+        <form action="herostatusDelMod" method="post">
+            <fieldset>
+                <legend><h1>Státuszok módosítása!</h1></legend>
+                <table border="1">
+                    <tr>
+                        <th><b>Hőd ID<b></th>
+                        <th>Élet pontok</th>
+                        <th>Mana pontok</th>
+                        <th>Level</th>
+                        <th>Exp</th>
+                        <th>Int</th>
+                        <th>Str</th>
+                        <th>Agi</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <input type="text" name="selectid" value="1">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="text" name="newhealth" value="100">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="text" name="newmana" value="100">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="text" name="newlevel" value="1">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="text" name="newexperience" value="0">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="text" name="newint" value="5">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="text" name="newstr" value="5">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="text" name="newagi" value="5">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="submit" name="modify" value="modify">
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="submit" name="delete" value="delete" disabled>
+                                </div>
+                            </td>
+                        </tr>
                 </table>
             </fieldset>
         </form>

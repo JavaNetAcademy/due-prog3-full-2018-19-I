@@ -7,7 +7,7 @@ package hu.javanetacademy.hoe.herostatus.dao.model.herostatus.dao.model;
 
 /**
  *
- * @author Attila
+ * @author majermarci
  */
 public class heroStatus {
     private long heroid;
