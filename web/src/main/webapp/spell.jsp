@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <form action="/hoe/newspell" method="post">
+        <form action="/hoe/spell" method="post">
             <fieldset>
                 <legend>Új Spell </legend>
                 <div>
@@ -18,7 +18,7 @@
                     <input name="name">
                 </div>
                 <div>
-                    <label>Mennyiség: </label>
+                    <label>Leírás: </label>
                     <input name="description">
                 </div>
                 <div>

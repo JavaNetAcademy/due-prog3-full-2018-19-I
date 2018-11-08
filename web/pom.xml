@@ -51,6 +51,26 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>hu.javanetacademy.hoe.spell.service.object</groupId>
+            <artifactId>spell-service-object</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>hu.javanetacademy.hoe.spell</groupId>
+            <artifactId>spell-dao-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>hu.javanetacademy.hoe.spell.jdc</groupId>
+            <artifactId>spell-dao-jdbc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>hu.javanetacademy.hoe.spell.web</groupId>
+            <artifactId>spell-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
