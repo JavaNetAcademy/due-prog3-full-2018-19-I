@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hu.javanetacademy.hoe.item.service.object;
-import hu.javanetacademy.hoe.Item.dao.jdbc.ItemJDBCDAOImpl;
-import hu.javanetacademy.hoe.createitem.dao.model.Item;
-import hu.javanetacademy.hoe.createitem.dao.model.ItemDAOInterface;
+package hu.javanetacademy.hoe.resources.service.object;
+import hu.javanetacademy.hoe.resources.dao.jdbc.ResourcesJDBCDAOImpl;
+import hu.javanetacademy.hoe.resources.dao.model.Resources;
+import hu.javanetacademy.hoe.resources.dao.model.ResourcesInterface;
 import java.util.List;
+
 /**
  *
- * @author Nagy Adam
+ * @author jf6vmn
  */
-public class ItemService {
-     ItemDAOInterface locdb=new ItemJDBCDAOImpl();    
+public class ResourcesService {
+     ResourcesInterface locdb=new ResourcesJDBCDAOImpl();    
     public void create (String nev,String info, long mennyiseg) {
-        Item loc=new Item();
+        Resources loc=new Resources();
         loc.setNev(nev);
         loc.setInfo(info);
         loc.setMennyiseg(mennyiseg);
@@ -26,18 +27,15 @@ public class ItemService {
         locdb.delete(id);
     }
    
-    public Item modify (long id, Item newdata)
+    public Resources modify (long id, Resources newdata)
     {
         return locdb.modify(id, newdata);
     }
 
-    public Item get(long id) {
+    public Resources get(long id) {
         return locdb.get(id);
     }
-     public List<Item> getList () {
+     public List<Resources> getList () {
         return locdb.getList();
     }
-    
-
-    
 }

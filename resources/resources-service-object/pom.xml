@@ -3,31 +3,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>hu.javanetacademy.hoe</groupId>
-        <artifactId>createItems</artifactId>
+        <artifactId>resources</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>item-service-object</artifactId>
+    <artifactId>resources-service-object</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>Item-dao-jdbc</artifactId>
+            <artifactId>resources-dao-model</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>hu.javanetacademy.hoe.createItem.dao.model</groupId>
-            <artifactId>createItem-dao-model</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>resources-dao-jdbc</artifactId>
+            <version>${project.version}</version>
         </dependency>
-    
-    <dependency>
-            <groupId>hu.javanetacademy.hoe.Item.dao.jdbc.ItemJDBCDAOImpl</groupId>
-            <artifactId>createItem-dao-jdbc</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    
-    
-    
     </dependencies>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
