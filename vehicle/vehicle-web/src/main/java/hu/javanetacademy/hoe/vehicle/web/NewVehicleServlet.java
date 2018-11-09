@@ -33,13 +33,11 @@ public class NewVehicleServlet extends HttpServlet {
        VehicleServiceObjectImpl vs=new VehicleServiceObjectImpl();
        String id=request.getParameter("pid");
        String name=request.getParameter("pname");
-       String info=request.getParameter("pdesc");
-       String speed=request.getParameter("plevel");
+       String info=request.getParameter("pinfo");
+       String speed=request.getParameter("pspeed");
        
        vs.create(Long.parseLong(id),name,info,Long.parseLong(speed));
     }
-
-
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -17,4 +17,8 @@ public interface VehicleDaoInterface {
     public Vehicle create(Vehicle vehicle);
     public Vehicle modify(long id, Vehicle vehicle);
     public Vehicle delete(long id);
+
+   // public List<Vehicle> getByUser(long id);
+
+   // public List<Vehicle> getByUser(long id);
 }

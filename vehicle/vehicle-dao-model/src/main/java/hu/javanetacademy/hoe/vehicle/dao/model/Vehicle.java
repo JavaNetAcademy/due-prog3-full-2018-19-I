@@ -12,6 +12,8 @@ package hu.javanetacademy.hoe.vehicle.dao.model;
 public class Vehicle {
     // Azonosito
     private long id;
+    //Hős Id-ja
+    private long heroid;
     // Neve
     private String name;
     // Leiras
@@ -19,11 +21,12 @@ public class Vehicle {
     // Sebesseg
     private long speed;
 
-    public Vehicle(long id, String name, String info, long speed) {
+    public Vehicle(long id, long heroid, String name, String info, long speed) {
         this.id = id;
         this.name = name;
         this.info = info;
         this.speed = speed;
+        this.heroid = heroid;
     }
 
     public Vehicle() {
@@ -32,6 +35,12 @@ public class Vehicle {
     
     public long getId() {
         return id;
+    }
+    public long getIdByHero(long heroid){
+        return this.id;
+    }
+    public long getHeroId(long id){
+        return this.heroid;
     }
 
     public void setId(long id) {

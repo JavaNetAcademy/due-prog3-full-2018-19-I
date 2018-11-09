@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Nagy Adam
+ * @author ttama
  */
 public class VehicleJdbcDao implements VehicleDaoInterface {
         private Connection con;
@@ -37,11 +37,11 @@ public class VehicleJdbcDao implements VehicleDaoInterface {
         @Override
     public Vehicle create (Vehicle vehicle){
         try {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO vehicle (name, info, speed) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps=con.prepareStatement("INSERT INTO vehicle (id, name, info, speed) VALUES (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setLong(1,vehicle.getId());
-            ps.setString(1,vehicle.getName());
-            ps.setString(2,vehicle.getInfo());
-            ps.setLong(3,vehicle.getSpeed());
+            ps.setString(2,vehicle.getName());
+            ps.setString(3,vehicle.getInfo());
+            ps.setLong(4,vehicle.getSpeed());
             ps.executeUpdate();
             con.commit();
             ResultSet rs=ps.getGeneratedKeys();
@@ -72,7 +72,7 @@ public class VehicleJdbcDao implements VehicleDaoInterface {
     public Vehicle delete(long id) {
         PreparedStatement ps;
         try {
-            ps = con.prepareStatement("DELETE FROM vehicle where id=?");
+            ps = con.prepareStatement("DELETE FROM vehicle WHERE id=?");
             ps.setLong(1,id);
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -83,7 +83,7 @@ public class VehicleJdbcDao implements VehicleDaoInterface {
     @Override
     public Vehicle getById(long Id) {
         try {
-            PreparedStatement ps=con.prepareStatement("SELECT id, name, info, speed FROM vehicle where id=?");
+            PreparedStatement ps=con.prepareStatement("SELECT id, name, info, speed FROM vehicle WHERE id=?");
             ps.setLong(1, Id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()) {

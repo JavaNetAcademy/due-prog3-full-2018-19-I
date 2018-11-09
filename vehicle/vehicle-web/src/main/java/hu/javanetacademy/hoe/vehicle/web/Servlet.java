@@ -12,8 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import hu.javanetacademy.hoe.empire.service.object.EmpireServiceObjectImpl;
-import hu.javanetacademy.hoe.empire.dao.model.Empire;
+import hu.javanetacademy.hoe.vehicle.service.object.VehicleServiceObjectImpl;
+import hu.javanetacademy.hoe.vehicle.dao.model.Vehicle;
 import hu.javanetacademy.hoe.hero.dao.model.Hero;
 import hu.javanetacademy.hoe.hero.service.object.HeroService;
 import hu.javanetacademy.hoe.user.dao.model.User;
@@ -33,14 +33,15 @@ public class Servlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         if (true) 
         {
-            EmpireServiceObjectImpl empservice=new EmpireServiceObjectImpl();
-            HeroService heroservice=new HeroService();
+            VehicleServiceObjectImpl vehicleService=new VehicleServiceObjectImpl();
+            HeroService heroService=new HeroService();
             User current=(User)request.getSession().getAttribute("user");
-            List<Empire> empires=empservice.getByUser(current.getId());
-            List<Hero> heroes=heroservice.getHeroByUser(current.getId());
-            request.setAttribute("empires", empires);
+         //  List<Vehicle> vehicle=vehicleService.getByUser(current.getId());
+            List<Vehicle> vehicle=vehicleService.getByUser(current.getId());
+            List<Hero> heroes=heroService.getHeroByUser(current.getId());
+            request.setAttribute("vehicles", vehicle);
             request.setAttribute("heroes", heroes);
-            request.getRequestDispatcher("/empires.jsp").forward(request, response);
+            request.getRequestDispatcher("/vehicle.jsp").forward(request, response);
         }
 
 

@@ -41,7 +41,7 @@ public class DelModVehicleServlet extends HttpServlet {
                     newVehicle.setName(request.getParameter("newname"));
                 }
                 if (request.getParameter("newinfo").equals("")) {
-                    newVehicle.setDescription(request.getParameter("newdesc"));     
+                    newVehicle.setInfo(request.getParameter("newdesc"));     
                 }
                 vs.modify(selected, newVehicle);
             }

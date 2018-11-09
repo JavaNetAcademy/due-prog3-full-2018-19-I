@@ -37,4 +37,9 @@ public class VehicleServiceObjectImpl {
     {
         dao.delete(id);
     }
+
+    public List<Vehicle> getByUser(long id) {
+        return null;
+     //   return dao.getByUser(id);
+    }
 }
