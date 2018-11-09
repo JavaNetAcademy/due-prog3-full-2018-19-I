@@ -20,12 +20,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     
-    <dependency>
-            <groupId>hu.javanetacademy.hoe.Item.dao.jdbc.ItemJDBCDAOImpl</groupId>
-            <artifactId>createItem-dao-jdbc</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    
     
     
     </dependencies>

@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package hu.javanetacademy.hoe.resources.web;
-import hu.javanetacademy.hoe.createitem.dao.model.Item;
+
+import hu.javanetacademy.hoe.resources.dao.model.Resources;
 import java.io.IOException;
 import java.io.PrintWriter;
-import hu.javanetacademy.hoe.item.service.object.ItemService;
+import hu.javanetacademy.hoe.resources.service.object.ResourcesService;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
