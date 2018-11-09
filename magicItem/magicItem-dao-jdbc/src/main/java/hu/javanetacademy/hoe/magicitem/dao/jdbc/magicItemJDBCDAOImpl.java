@@ -29,7 +29,7 @@ public class magicItemJDBCDAOImpl implements magicItemDAOInterface {
     public magicItemJDBCDAOImpl() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost/hoe?useSSL=false", "hoe", "hoe");
+            con=DriverManager.getConnection("jdbc:mysql://db.inf.duf.hu/p_frhzu1?useSSL=false", "p_frhzu1", "frhzu1");
         } catch (Exception e) {
             System.exit(100);
         }
