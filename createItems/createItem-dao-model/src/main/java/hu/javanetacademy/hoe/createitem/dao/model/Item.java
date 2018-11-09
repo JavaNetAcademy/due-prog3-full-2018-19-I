@@ -18,12 +18,23 @@ public class Item {
     private String info;
     //Menyiség
     private long mennyiseg;
+    
+    private long nyersanyagid;
 
-    public Item(long id, String nev, String info, long mennyiseg) {
+    public long getNyersanyagid() {
+        return nyersanyagid;
+    }
+
+    public void setNyersanyagid(long nyersanyagid) {
+        this.nyersanyagid = nyersanyagid;
+    }
+
+    public Item(long id, String nev, String info, long mennyiseg, long nyersanyagid) {
         this.id = id;
         this.nev = nev;
         this.info = info;
         this.mennyiseg = mennyiseg;
+        this.nyersanyagid = nyersanyagid;
     }
 
     public Item() {

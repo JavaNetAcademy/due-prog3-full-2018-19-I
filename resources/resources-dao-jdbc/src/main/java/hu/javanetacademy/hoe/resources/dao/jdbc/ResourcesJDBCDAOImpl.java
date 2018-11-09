@@ -120,7 +120,7 @@ public class ResourcesJDBCDAOImpl implements ResourcesInterface {
     @Override
     public List<Resources> getList() {
                 try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,name,info,mennyiseg FROM item");
+            PreparedStatement ps=con.prepareStatement("SELECT id,name,info,mennyiseg FROM nyersanyagok");
             ResultSet rs=ps.executeQuery();
             List<Resources> locl=new ArrayList<Resources>();
             while(rs.next()) {

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author jf6vmn
  */
 @WebServlet(urlPatterns = {"/user/resources/resources"})
-public class NewResourcesServlet {
+public class NewResourcesServlet extends HttpServlet{
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +35,7 @@ public class NewResourcesServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       
-       ResourcesService ls=new ItemService();
+       ResourcesService ls=new ResourcesService();
        String name=request.getParameter("nev");
        String desc=request.getParameter("info");
         String meny =request.getParameter("mennyiseg");

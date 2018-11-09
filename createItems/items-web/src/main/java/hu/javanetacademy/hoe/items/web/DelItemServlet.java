@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import hu.javanetacademy.hoe.resources.dao.model.Resources;
 
 /**
  *
@@ -26,7 +27,9 @@ public class DelItemServlet extends HttpServlet {
             throws ServletException, IOException {
         ItemService ls = new ItemService();
         List<Item>lista = ls.getList();
+        List<Resources>listaR = ls.getRList();
         request.setAttribute("items", lista);
+        request.setAttribute("resources", listaR);
         request.getRequestDispatcher("/delitem.jsp").forward(request, response);
         
      //   processRequest(request, response);
@@ -58,7 +61,10 @@ public class DelItemServlet extends HttpServlet {
                     newmennyiseg.setInfo(request.getParameter("newinfo"));     
                 }
                 if (!request.getParameter("newamount").equals("")) {
-                    newmennyiseg.setMennyiseg(Long.parseLong(request.getParameter("newinfo")));     
+                    newmennyiseg.setMennyiseg(Long.parseLong(request.getParameter("newamount")));     
+                }
+                if(!request.getParameter("selectedItemk").equals("")){
+                   newmennyiseg.setNyersanyagid(Long.parseLong(request.getParameter("selectedItemk")));
                 }
                 ls.modify(selected, newmennyiseg);
             }

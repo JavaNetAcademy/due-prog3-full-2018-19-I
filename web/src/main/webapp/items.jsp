@@ -31,7 +31,7 @@
         </br>
         <table>
             <tr>
-                <td><form action="/hoe/newitem.jsp" method="post"><input type="submit" value="New item"></form></td>
+                <td><form action="/hoe/user/items/new" method="get"><input type="submit" value="New item"></form></td>
                 <td><form action="/hoe/user/items/delitem" method="get"><input type="submit" value="Modify/delete item"></form></td>
             </tr>
         </table>

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @WebServlet(urlPatterns = {"/user/resources/delresources"})
-public class DelResourcesServlet {
+public class DelResourcesServlet extends HttpServlet{
 
   
     @Override

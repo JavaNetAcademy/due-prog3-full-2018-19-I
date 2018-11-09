@@ -34,6 +34,11 @@
                     <label>Amount: </label>
                     <input type="number" min="0" name="newamount">
                 </div>
+                 <select name="selectedItemk">
+                <c:forEach var="it" items="${resources}">
+                    <option value="${it.id}">${it.nev}</option>
+                </c:forEach>
+            </select> 
                 <div>
                     <input type="submit" name="modify" value="Modify" onclick="return confirm('Are you sure you want to modify this item?')">
                 </div>

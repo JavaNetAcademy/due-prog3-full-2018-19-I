@@ -20,13 +20,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author jf6vmn
  */
 @WebServlet(urlPatterns = {"/user/resources"})
-public class ResourcesServlet {
+public class ResourcesServlet extends HttpServlet{
+    
     private ResourcesService is=new ResourcesService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Resources> items=is.getList();
-        request.setAttribute("resources", resources);
+        request.setAttribute("resources", items);
         request.getRequestDispatcher("/resources.jsp").forward(request, response);
     }
 

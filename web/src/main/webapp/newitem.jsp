@@ -27,6 +27,11 @@
                 <label>Mennyiség: </label>
                 <input type="number" min="0" name="mennyiseg" >
                 </div>
+                <select name="selectedItem">
+                <c:forEach var="it" items="${resources}">
+                    <option value="${it.id}">${it.nev}</option>
+                </c:forEach>
+            </select> 
                 <div><input type="submit" value="Hozzáad" onclick="Szamot()"></div>
             </fieldset>
      </form>

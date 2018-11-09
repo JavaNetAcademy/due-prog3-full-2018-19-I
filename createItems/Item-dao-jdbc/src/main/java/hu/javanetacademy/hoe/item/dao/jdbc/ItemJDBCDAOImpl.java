@@ -6,6 +6,8 @@
 package hu.javanetacademy.hoe.item.dao.jdbc;
 import hu.javanetacademy.hoe.createitem.dao.model.Item;
 import hu.javanetacademy.hoe.createitem.dao.model.ItemDAOInterface;
+import hu.javanetacademy.hoe.resources.dao.model.Resources;
+import hu.javanetacademy.hoe.resources.dao.model.ResourcesInterface;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,10 +39,11 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         @Override
     public Item create (Item item){
         try {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO item (name, info, mennyiseg) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps=con.prepareStatement("INSERT INTO item (name, info, mennyiseg,nyersanyagid) VALUES (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,item.getNev());
             ps.setString(2,item.getInfo());
             ps.setLong(3,item.getMennyiseg());
+            ps.setLong(4,item.getNyersanyagid());
             ps.executeUpdate();
             con.commit();
             ResultSet rs=ps.getGeneratedKeys();
@@ -56,14 +59,15 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
     @Override
     public Item modify(long id, Item item) {
         try {
-            PreparedStatement ps=con.prepareStatement("UPDATE item SET name=?, info=?, mennyiseg=? WHERE id=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE item SET name=?, info=?, mennyiseg=?, nyersanyagid=? WHERE id=?");
               ps.setString(1, item.getNev());
             ps.setString(2, item.getInfo());
             ps.setLong(3, item.getMennyiseg());
-            ps.setLong(4,id);
+            ps.setLong(4,item.getNyersanyagid());
+            ps.setLong(5, id);
             ps.executeUpdate();
         } catch (Exception ex) {
-            Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(ItemJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

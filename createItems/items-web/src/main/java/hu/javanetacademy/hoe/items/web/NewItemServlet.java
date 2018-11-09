@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import hu.javanetacademy.hoe.resources.dao.model.Resources;
 
 /**
  *
@@ -21,7 +22,12 @@ public class NewItemServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {            
       response.setContentType("text/html;charset=UTF-8");
-      
+       ItemService ls = new ItemService();
+        List<Item>lista = ls.getList();
+        List<Resources>listaR = ls.getRList();
+        request.setAttribute("items", lista);
+        request.setAttribute("resources", listaR);
+        request.getRequestDispatcher("/newitem.jsp").forward(request, response);
         }
      
     
@@ -33,6 +39,7 @@ public class NewItemServlet extends HttpServlet {
        String name=request.getParameter("nev");
        String desc=request.getParameter("info");
         String meny =request.getParameter("mennyiseg");
+        String nyers = request.getParameter("selectedItem");
         ls.create(name,desc,Long.parseLong(meny) );
         request.getRequestDispatcher("/user/items").forward(request, response);
        
