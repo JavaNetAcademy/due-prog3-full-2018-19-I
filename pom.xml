@@ -19,6 +19,8 @@
         <module>vehicle</module>
         <module>mobs</module>
         <module>heroStatus</module>
+        <module>DefenderBuilding</module>
+        <module>../../../Desktop/armor</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
