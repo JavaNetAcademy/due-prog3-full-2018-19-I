@@ -13,11 +13,9 @@ import java.util.List;
  */
 public interface HeroClassDAOInterface {
     public HeroClass create(HeroClass pHeroClass);
-    public HeroClass modify(long pOldHeroClassId, HeroClass pNewHeroClass);
-    public HeroClass delete(long pHeroClassId);
+    public HeroClass modify(String pHeroClassName,String pHeroClassDescription, HeroClass pNewHeroClass);
+    public HeroClass delete(String pHeroClassName);
 
-    public HeroClass get(long pHeroClassId);
-    public List<HeroClass> getByUser(long pUserId);
-    public HeroClass getByName(String pHeroClassName);
+    public HeroClass get(String pHeroClassName);
     public List<HeroClass> getAll();
 }

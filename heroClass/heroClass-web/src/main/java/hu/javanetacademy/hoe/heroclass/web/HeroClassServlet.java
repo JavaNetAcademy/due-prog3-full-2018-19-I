@@ -31,7 +31,7 @@ public class HeroClassServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");   
         HeroClassServiceObjectImpl heroclassserv =new HeroClassServiceObjectImpl();
-        List<HeroClass> heroclasses=heroclassserv.getAllHeroClasses();
+        List<HeroClass> heroclasses=heroclassserv.getAll();
         request.setAttribute("heroclasses", heroclasses);
         request.getRequestDispatcher("/heroclass.jsp").forward(request, response);
     }

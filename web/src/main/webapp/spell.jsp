@@ -11,8 +11,8 @@
             <fieldset>
                 <legend>Új Spell </legend>
                 <div>
-                    <label>Hős ID: </label>
-                    <input name="heroid">
+                    <label>Class: </label>
+                    <input name="classidadd">
                 </div>
                 <div>
                     <label>Spell név: </label>
@@ -48,15 +48,49 @@
                 <legend>All spells</legend>
                 <table border="1">
                     <tr>
-                        <th>Spell ID</th>
-                        <th>Spell neve</th>
+                        <th>ID</th>
+                        <th><b>Class</b></th>
+                        <th>Name</th>
                         <th>Leírás</th>
+                        <th>Attack Power</th>
+                        <th>Deffensive Power</th>
                     </tr>
-                    <c:forEach var="spell" items="${spells}">
+                    <c:forEach var="spellall" items="${spellsAll}">
+                        <tr>
+                            <td>${spellall.id}</td>
+                            <td>${spellall.classid}</td>
+                            <td>${spellall.name}</td>
+                            <td>${spellall.description}</td>
+                            <td>${spellall.attpower}</td>
+                            <td>${spellall.deffpower}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>Specific class spells</legend>
+                <div>
+                    <label>Class: </label>
+                    <input type="submit" name="selectid" value="Warrior">
+                    <input type="submit" name="selectid" value="Paladin">
+                </div>
+                <table border="1">
+                    <tr>
+                        <th>ID</th>
+                        <th><b>Class</b></th>
+                        <th>Name</th>
+                        <th>Leírás</th>
+                        <th>Attack Power</th>
+                        <th>Deffensive Power</th>
+                    </tr>
+                    <c:forEach var="spell" items="${spellsSel}">
                         <tr>
                             <td>${spell.id}</td>
+                            <td>${spell.classid}</td>
                             <td>${spell.name}</td>
                             <td>${spell.description}</td>
+                            <td>${spell.attpower}</td>
+                            <td>${spell.deffpower}</td>
                         </tr>
                     </c:forEach>
                 </table>

@@ -20,6 +20,14 @@ public class Hero extends BaseDataModel{
     public void setUserid(long userid) {
         this.userid = userid;
     }
+
+    public String getClassid() {
+        return classid;
+    }
+
+    public void setClassid(String classid) {
+        this.classid = classid;
+    }
     
     
     

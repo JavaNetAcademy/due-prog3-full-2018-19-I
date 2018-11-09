@@ -29,12 +29,15 @@ public class SpellServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         SpellServiceObjectImpl spellserv =new SpellServiceObjectImpl();
-        List<Spell> spells=spellserv.getAll();
+        String sel= request.getParameter("selectid");
+        List<Spell> spells=spellserv.getByClass(sel);
+        List<Spell> spellsAll=spellserv.getAll();
         request.setAttribute("spells", spells);
+        request.setAttribute("spellsAll", spellsAll);
         request.getRequestDispatcher("/spell.jsp").forward(request, response);
         
     }
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -8,11 +8,11 @@ import java.util.List;
 public interface HeroDAOInterface {
 
 public Hero create(Hero pHero);
-public Hero modify(long pOldHeroId, Hero pNewHero);
-public Hero delete(long pHeroId);
+public Hero modify(long pOldId, Hero pNewHero);
+public Hero delete(long pId);
 
-public Hero get(long pHeroId);
+public Hero get(long pId);
+public List<Hero>getByName(String pName);
 public List<Hero> getByUser(long pUserId);
-public Hero getByNameFromUser(String pHeroName, long pUserId);
 
 }

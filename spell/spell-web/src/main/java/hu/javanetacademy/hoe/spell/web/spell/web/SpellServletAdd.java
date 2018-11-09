@@ -36,13 +36,13 @@ public class SpellServletAdd extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         SpellServiceObjectImpl ls = new SpellServiceObjectImpl();
-        String heroid=request.getParameter("heroid");
+        String classid=request.getParameter("classidadd");
         String name=request.getParameter("name");
         String description=request.getParameter("description");
         String attpower=request.getParameter("attpower");
         String deffpower=request.getParameter("deffpower");
         Spell newSpell = new Spell();
-        newSpell.setHeroid(Long.parseLong(heroid));
+        newSpell.setclassid(classid);
         newSpell.setName(name);
         newSpell.setDescription(description);
         newSpell.setAttpower(Long.parseLong(attpower));

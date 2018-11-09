@@ -18,38 +18,38 @@ import java.util.List;
  * @author Norbi
  */
 public class HeroClassServiceObjectImpl {
-    
+    /*
+    public HeroClass create(HeroClass pHeroClass);
+    public HeroClass modify(String pHeroClassName,String pHeroClassDescription, HeroClass pNewHeroClass);
+    public HeroClass delete(String pHeroClassName);
+
+    public HeroClass get(String pHeroClassName);
+    public List<HeroClass> getAll();
+*/
     private HeroClassDAOInterface dao = new HeroClassDaoJDBCImpl();
     
     
-    public HeroClass create(HeroClass pNewHeroClass){
-        HeroClass avb = dao.getByName(pNewHeroClass.getName());
+    public HeroClass create(HeroClass pHeroClass){
+        HeroClass avb = dao.get(pHeroClass.getName());
         if (avb == null) {           
-            return dao.create(pNewHeroClass);
+            return dao.create(pHeroClass);
         } else {
             throw new CustomException();
         }
     }
-    public List<HeroClass> getHeroClassByUser(long pUserId) {
-        return dao.getByUser(pUserId);
+
+    public HeroClass modify(String pHeroClassName,String pHeroClassDescription, HeroClass pNewHeroClass) {
+        return dao.modify(pHeroClassName, pHeroClassDescription,pNewHeroClass);
     }
 
-    public HeroClass modifyHeroClass(long pOldHeroClassId, HeroClass pNewHeroClass) {
-        return dao.modify(pOldHeroClassId, pNewHeroClass);
+    public HeroClass delete(String pHeroClassName) {
+        return dao.delete(pHeroClassName);
     }
 
-    public HeroClass deleteHeroClass(long pHeroClassId) {
-        return dao.delete(pHeroClassId);
+    public HeroClass get(String pHeroClassName) {
+        return dao.get(pHeroClassName);
     }
-
-    public HeroClass getHeroClass(long pHeroClassId) {
-        return dao.get(pHeroClassId);
-    }
-
-    public HeroClass getHeroClassByName(String pHeroClassName) {
-        return dao.getByName(pHeroClassName);
-    }
-    public List<HeroClass> getAllHeroClasses() {
+    public List<HeroClass> getAll() {
         return dao.getAll();
     }
 }

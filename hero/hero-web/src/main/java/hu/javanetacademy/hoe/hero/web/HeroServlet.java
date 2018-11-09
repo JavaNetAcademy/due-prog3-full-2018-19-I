@@ -56,7 +56,7 @@ public class HeroServlet extends HttpServlet {
         Hero newHero = new Hero();
         newHero.setName(request.getParameter("pname"));
         newHero.setDescription(request.getParameter("pdesc"));
-        newHero.setUserid(100);
+        newHero.setClassid(request.getParameter("pclass"));
         HeroService hs = new HeroService();
         hs.create(newHero);
     }

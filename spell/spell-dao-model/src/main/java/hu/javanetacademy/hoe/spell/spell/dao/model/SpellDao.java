@@ -17,5 +17,5 @@ public interface SpellDao {
     public Spell delete(long pSpellId);
     public Spell get(long pSpellId);
     public List<Spell> getAll();
-    public List<Spell> getByHero(long pHeroId);
+    public List<Spell> getByClass(String classid);
 }

@@ -11,7 +11,7 @@
         <input type="text" name="pname">
     </div>
     <div>
-        <span>Le√≠r√°s</span>
+        <span>LeÌr·s</span>
         <textarea name="pdesc"></textarea>
     </div>
         <div>

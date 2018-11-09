@@ -37,8 +37,8 @@ public class HeroClassServletRemove extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HeroClassServiceObjectImpl ls=new HeroClassServiceObjectImpl();
-        String id=request.getParameter("id");
-        ls.deleteHeroClass(Long.parseLong(id));
+        String classname=request.getParameter("classname");
+        ls.delete(classname);
        
     }
     

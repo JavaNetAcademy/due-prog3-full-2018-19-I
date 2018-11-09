@@ -5,16 +5,17 @@ package hu.javanetacademy.hoe.hero.dao.model;
  * @author krisztian
  */
 public class BaseDataModel {
-    protected String name,description;
     protected long id;
+    protected String name,description,classid;
 
     public BaseDataModel() {
     }
 
-    public BaseDataModel(String name, String description, long id) {
+    public BaseDataModel(long id, String classid, String name, String description) {
+        this.id = id;
+        this.classid = classid;
         this.name = name;
         this.description = description;
-        this.id = id;
     }
 
     public long getId() {
@@ -25,8 +26,14 @@ public class BaseDataModel {
         this.id = id;
     }
 
-    
-    
+    public String getClassid() {
+        return classid;
+    }
+
+    public void setClassid(String classid) {
+        this.classid = classid;
+    }
+
     public String getName() {
         return name;
     }
@@ -42,6 +49,8 @@ public class BaseDataModel {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
     
     
 }

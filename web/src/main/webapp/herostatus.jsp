@@ -59,42 +59,42 @@
                         <tr>
                             <td>
                                 <div>
-                                    <input type="text" name="selectid" value="1">
+                                    <input type="text" name="selectid" value="">
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <input type="text" name="newhealth" value="100">
+                                    <input type="text" name="newhealth" value="">
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <input type="text" name="newmana" value="100">
+                                    <input type="text" name="newmana" value="">
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <input type="text" name="newlevel" value="1">
+                                    <input type="text" name="newlevel" value="">
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <input type="text" name="newexperience" value="0">
+                                    <input type="text" name="newexperience" value="">
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <input type="text" name="newint" value="5">
+                                    <input type="text" name="newint" value="">
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <input type="text" name="newstr" value="5">
+                                    <input type="text" name="newstr" value="">
                                 </div>
                             </td>
                             <td>
                                 <div>
-                                    <input type="text" name="newagi" value="5">
+                                    <input type="text" name="newagi" value="">
                                 </div>
                             </td>
                             <td>

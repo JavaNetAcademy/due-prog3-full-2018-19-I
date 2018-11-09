@@ -39,12 +39,13 @@ public class SpellJDBCDAOImpl implements SpellDao {
     @Override
     public Spell create(Spell pSpell) {
         try {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO spell (heroid,name,description,attpower,deffpower) VALUES (?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
-            ps.setLong(1, pSpell.getHeroid());
-            ps.setString(2, pSpell.getName());
-            ps.setString(3, pSpell.getDescription());
-            ps.setLong(4, pSpell.getAttpower());
-            ps.setLong(5, pSpell.getDeffpower());
+            PreparedStatement ps=con.prepareStatement("INSERT INTO spell (id,classid,name,description,attpower,deffpower) VALUES (?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            ps.setLong(1, pSpell.getId());
+            ps.setString(2, pSpell.getclassid());
+            ps.setString(3, pSpell.getName());
+            ps.setString(4, pSpell.getDescription());
+            ps.setLong(5, pSpell.getAttpower());
+            ps.setLong(6, pSpell.getDeffpower());
             ps.executeUpdate();
             ResultSet rs=ps.getGeneratedKeys();
             if (rs.next()) {
@@ -60,8 +61,8 @@ public class SpellJDBCDAOImpl implements SpellDao {
     @Override
     public Spell modify(long pOldSpellId, Spell pNewSpell) {
         try {
-            PreparedStatement ps=con.prepareStatement("UPDATE spell SET heroid=?, name=?, description=?, attpower=?, deffpower=? WHERE id=?");
-            ps.setLong(1, pNewSpell.getHeroid());
+            PreparedStatement ps=con.prepareStatement("UPDATE spell SET classid=?, name=?, description=?, attpower=?, deffpower=? WHERE id=?");
+            ps.setString(1, pNewSpell.getclassid());
             ps.setString(2, pNewSpell.getName());
             ps.setString(3, pNewSpell.getDescription());
             ps.setLong(4, pNewSpell.getAttpower());
@@ -91,13 +92,13 @@ public class SpellJDBCDAOImpl implements SpellDao {
     public Spell get(long pSpellId) {
         Spell result=new Spell();
         try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,heroid,name,description,attpower,deffpower FROM spell where id=?");
+            PreparedStatement ps=con.prepareStatement("SELECT id,classid,name,description,attpower,deffpower FROM spell where id=?");
             ps.setLong(1, pSpellId);
             ResultSet rs=ps.executeQuery();
             if (rs.next()) {
                 Spell res = new Spell();
                 res.setId(rs.getLong(1));
-                res.setHeroid(rs.getLong(2));
+                res.setclassid(rs.getString(2));
                 res.setName(rs.getString(3));
                 res.setDescription(rs.getString(4));
                 res.setAttpower(rs.getInt(5));         
@@ -114,12 +115,12 @@ public class SpellJDBCDAOImpl implements SpellDao {
     public List<Spell> getAll() {
         List<Spell> resAll = new ArrayList<>();
         try{
-            PreparedStatement ps =con.prepareStatement("SELECT id,heroid,name,description,attpower,deffpower FROM spell ORDER BY name");
+            PreparedStatement ps =con.prepareStatement("SELECT id,classid,name,description,attpower,deffpower FROM spell ORDER BY name");
             ResultSet rs= ps.executeQuery();
             while(rs.next()){
                 Spell res = new Spell();
                 res.setId(rs.getLong(1));
-                res.setHeroid(rs.getLong(2));
+                res.setclassid(rs.getString(2));
                 res.setName(rs.getString(3));
                 res.setDescription(rs.getString(4));
                 res.setAttpower(rs.getInt(5));         
@@ -133,20 +134,21 @@ public class SpellJDBCDAOImpl implements SpellDao {
         return resAll;
     }
     @Override
-    public List<Spell> getByHero(long pHeroId) {
+    public List<Spell> getByClass(String classidInp) {
         List<Spell> resAll = new ArrayList<>();
         try{
-            PreparedStatement ps =con.prepareStatement("SELECT id,heroid,name,description,attpower,deffpower FROM spell WHERE heroid=? ORDER BY name");
-            ps.setLong(1, pHeroId);
-            ResultSet rs= ps.executeQuery();
+            PreparedStatement ps = con.prepareStatement("SELECT id,classid,name,description,attpower,deffpower FROM spell WHERE classid='?'");
+            ps.setString(1, classidInp);
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Spell res = new Spell();
                 res.setId(rs.getLong(1));
-                res.setHeroid(rs.getLong(2));
+                res.setclassid(rs.getString(2));
                 res.setName(rs.getString(3));
                 res.setDescription(rs.getString(4));
                 res.setAttpower(rs.getInt(5));         
                 res.setDeffpower(rs.getLong(6));
+                res.setclassid(rs.getString(7));
                 resAll.add(res);
             }
         }

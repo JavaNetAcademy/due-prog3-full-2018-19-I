@@ -35,12 +35,13 @@ public class HeroJDBCDAOImpl implements HeroDAOInterface{
     @Override
     public Hero create(Hero pHero) {        
         try {
-            PreparedStatement ps =con.prepareStatement("INSERT INTO hero(name,description,userid) VALUES(?,?,?)",Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, pHero.getName());
-            ps.setString(2, pHero.getDescription());
-            ps.setLong(3, pHero.getUserid());
+            PreparedStatement ps =con.prepareStatement("INSERT INTO hero(id,name,description,userid,classid) VALUES(?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);   
+            ps.setString(2, pHero.getName());
+            ps.setString(3, pHero.getDescription());
+            ps.setLong(4, pHero.getUserid());
+            ps.setString(5, pHero.getClassid());
             ps.executeUpdate();
-            ResultSet rs= ps.getGeneratedKeys();
+            ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
                 pHero.setId(rs.getLong(1));
                 return pHero;
@@ -64,7 +65,7 @@ public class HeroJDBCDAOImpl implements HeroDAOInterface{
     @Override
     public Hero get(long pHeroId) {
         try{
-            PreparedStatement ps =con.prepareStatement("SELECT id,name,description,userid FROM hero WHERE id=?");
+            PreparedStatement ps =con.prepareStatement("SELECT id,name,description,userid,classid FROM hero WHERE id=?");
             ps.setLong(1, pHeroId);
             ResultSet rs= ps.executeQuery();
             if(rs.next()){
@@ -73,6 +74,8 @@ public class HeroJDBCDAOImpl implements HeroDAOInterface{
                 res.setName(rs.getString(2));
                 res.setDescription(rs.getString(3));
                 res.setUserid(rs.getLong(4));
+                res.setClassid(rs.getString(5));
+                res.setId(rs.getLong(6));
                 return res;
             }
         }catch (SQLException ex) {
@@ -85,7 +88,7 @@ public class HeroJDBCDAOImpl implements HeroDAOInterface{
     public List<Hero> getByUser(long pUserId){ 
         List<Hero> resAll = new ArrayList<>();
         try{
-            PreparedStatement ps =con.prepareStatement("SELECT id,name,description,userid FROM hero WHERE userid=? ORDER BY name");
+            PreparedStatement ps =con.prepareStatement("SELECT id,name,description,userid,classid FROM hero WHERE userid=? ORDER BY name");
             ps.setLong(1, pUserId);
             ResultSet rs= ps.executeQuery();
             while(rs.next()){
@@ -94,32 +97,34 @@ public class HeroJDBCDAOImpl implements HeroDAOInterface{
                 res.setName(rs.getString(2));
                 res.setDescription(rs.getString(3));
                 res.setUserid(rs.getLong(4));
+                res.setClassid(rs.getString(5));
+                res.setUserid(rs.getLong(6));
                 resAll.add(res);
             }
         }
         catch (SQLException ex) {}
         return resAll;
     }
-
+    
     @Override
-    public Hero getByNameFromUser(String pHeroName, long pUserId) {
-    try{
-            PreparedStatement ps =con.prepareStatement("SELECT id,name,description,userid FROM hero WHERE name=? AND userid=?");
-            ps.setString(1, pHeroName);
-            ps.setLong(2, pUserId);
+    public List<Hero> getByName(String pName){ 
+        List<Hero> resAll = new ArrayList<>();
+        try{
+            PreparedStatement ps =con.prepareStatement("SELECT id,name,description,userid,classid FROM hero WHERE name=? ORDER BY name");
+            ps.setString(1, pName);
             ResultSet rs= ps.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Hero res = new Hero();
                 res.setId(rs.getLong(1));
                 res.setName(rs.getString(2));
                 res.setDescription(rs.getString(3));
                 res.setUserid(rs.getLong(4));
-                return res;
+                res.setClassid(rs.getString(5));
+                res.setName(rs.getString(6));
+                resAll.add(res);
             }
-        }catch (SQLException ex) {
-            Logger.getLogger(HeroJDBCDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        catch (SQLException ex) {}
+        return resAll;
     }
-    
 }

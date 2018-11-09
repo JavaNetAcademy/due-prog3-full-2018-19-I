@@ -11,10 +11,6 @@
             <fieldset>
                 <legend>New Hero Class </legend>
                 <div>
-                    <label>User ID: </label>
-                    <input name="userid">
-                </div>
-                <div>
                     <label>Hero Class name: </label>
                     <input name="name">
                 </div>
@@ -22,37 +18,35 @@
                     <label>Description: </label>
                     <input name="description">
                 </div>
-                <div><input type="submit" value="Hozzáad"></div>
+                <div><input type="submit" value="Class Hozzáad"></div>
             </fieldset>
-            <form action="/hoe/removeheroclass" method="post">
+        </form>
+        <form action="/hoe/removeheroclass" method="post">
             <fieldset>
                 <legend>Delete </legend>
                 <div>
-                    <label>Spell ID: </label>
-                    <input name="id">
+                    <label>Hero Class name: </label>
+                    <input name="classname">
                 </div>
-                <div><input type="submit" value="Képesség törlése"></div>
+                <div><input type="submit" value="Class törlése"></div>
             </fieldset>
         </form>
-        <form action="/hoe/heroclass" method="get">
+        <form action="/heroclass" method="get">
             <fieldset>
                 <legend>All hero classes</legend>
                 <table border="1">
                     <tr>
-                        <th>Class ID</th>
                         <th>Class name</th>
                         <th>Description</th>
                     </tr>
                     <c:forEach var="heroclass" items="${heroclasses}">
                         <tr>
-                            <td>${heroclasses.id}</td>
-                            <td>${heroclasses.name}</td>
-                            <td>${heroclasses.description}</td>
+                            <td>${heroclass.name}</td>
+                            <td>${heroclass.description}</td>
                         </tr>
                     </c:forEach>
                 </table>
             </fieldset>
-        </form>
         </form>
     </body>
 </html>

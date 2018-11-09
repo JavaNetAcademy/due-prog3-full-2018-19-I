@@ -10,33 +10,14 @@ package hu.javanetacademy.hoe.heroclass.dao.model;
  * @author Norbi
  */
 public class HeroClass {
-    private long id,userid;
     private String name,description;
     
     public HeroClass() {
     }
     
-    public HeroClass(String name, String description, long id,long userid) {
+    public HeroClass(String name, String description) {
         this.name = name;
         this.description = description;
-        this.id = id;
-        this.userid = userid;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getUserid() {
-        return userid;
-    }
-
-    public void setUserid(long userid) {
-        this.userid = userid;
     }
 
     public String getName() {

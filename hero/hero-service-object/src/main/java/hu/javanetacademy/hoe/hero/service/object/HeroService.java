@@ -14,7 +14,7 @@ public class HeroService {
    private HeroDAOInterface dao= new HeroJDBCDAOImpl();
    
    public Hero create(Hero pNewHero){
-       Hero avb = dao.getByNameFromUser(pNewHero.getName(), pNewHero.getUserid());
+       Hero avb = dao.get(pNewHero.getUserid());
        if(avb==null)
         return dao.create(pNewHero);
        else 
@@ -24,5 +24,4 @@ public class HeroService {
    public List<Hero> getHeroByUser(long pUserId){
        return dao.getByUser(pUserId);
    }
-   
 }

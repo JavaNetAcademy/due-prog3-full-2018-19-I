@@ -37,11 +37,9 @@ public class AddHeroClassServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HeroClassServiceObjectImpl ls = new HeroClassServiceObjectImpl();
-        String userid=request.getParameter("userid");
         String name=request.getParameter("name");
         String description=request.getParameter("description");
         HeroClass newHeroClass = new HeroClass();
-        newHeroClass.setUserid(Long.parseLong(userid));
         newHeroClass.setName(name);
         newHeroClass.setDescription(description);
         ls.create(newHeroClass);

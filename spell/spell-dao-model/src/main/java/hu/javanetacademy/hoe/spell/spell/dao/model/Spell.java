@@ -11,8 +11,9 @@ package hu.javanetacademy.hoe.spell.spell.dao.model;
  */
 public class Spell {
     // Azonosító, egyéni + hős akihez rendelve van a képesség
-    private long id,heroid;
+    private long id;
     // Neve
+    private String classid;
     private String name;
     // Leírás
     private String description;
@@ -21,9 +22,9 @@ public class Spell {
     // Támadó Védekező erő
     private long deffpower;
 
-    public Spell(long id, long heroid, String name, String description, long attpower, long deffpower) {
+    public Spell(long id, String classid, String name, String description, long attpower, long deffpower) {
         this.id = id;
-        this.heroid = heroid;
+        this.classid = classid;
         this.name = name;
         this.description = description;
         this.attpower = attpower;
@@ -41,12 +42,12 @@ public class Spell {
         this.id = id;
     }
 
-    public long getHeroid() {
-        return heroid;
+    public String getclassid() {
+        return classid;
     }
 
-    public void setHeroid(long heroid) {
-        this.heroid = heroid;
+    public void setclassid(String classid) {
+        this.classid = classid;
     }
 
     public String getName() {

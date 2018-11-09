@@ -21,7 +21,7 @@ public class SpellServiceObjectImpl {
     public Spell modify(long pOldSpellId, Spell pNewSpell);
     public Spell delete(long pSpellId);
     public Spell get(long pSpellId);
-    public List<Spell> getByHero(long pHeroId);
+    public List<Spell> getByHero(long pclassid);
     */
     public Spell create(Spell pSpell)
     {
@@ -43,8 +43,8 @@ public class SpellServiceObjectImpl {
     {
         return dao.getAll();
     }
-    public List<Spell> getByHero(long heroid)
+    public List<Spell> getByClass(String classid)
     {
-        return dao.getByHero(heroid);
+        return dao.getByClass(classid);
     }
 }
