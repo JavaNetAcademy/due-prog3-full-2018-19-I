@@ -32,7 +32,7 @@
                 </div>
                 <div>
                     <label>Amount: </label>
-                    <input type="text" name="newamount">
+                    <input type="number" min="0" name="newamount">
                 </div>
                 <div>
                     <input type="submit" name="modify" value="Modify" onclick="return confirm('Are you sure you want to modify this item?')">

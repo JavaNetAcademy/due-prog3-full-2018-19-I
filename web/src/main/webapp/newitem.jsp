@@ -25,10 +25,11 @@
                 </div>
                 <div>
                 <label>Mennyiség: </label>
-                <input name="mennyiseg">
+                <input type="number" min="0" name="mennyiseg" >
                 </div>
-                <div><input type="submit" value="Hozzáad"></div>
+                <div><input type="submit" value="Hozzáad" onclick="Szamot()"></div>
             </fieldset>
-        </form>
+     </form>
+       
     </body>
 </html>
