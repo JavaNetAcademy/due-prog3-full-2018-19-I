@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package hu.javanetacademy.hoe.item.service.object;
-import hu.javanetacademy.hoe.Item.dao.jdbc.ItemJDBCDAOImpl;
+import hu.javanetacademy.hoe.item.dao.jdbc.ItemJDBCDAOImpl;
 import hu.javanetacademy.hoe.createitem.dao.model.Item;
 import hu.javanetacademy.hoe.createitem.dao.model.ItemDAOInterface;
 import java.util.List;
