@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hu.javanetacademy.hoe.resources.web;
-
+import hu.javanetacademy.hoe.createitem.dao.model.Item;
+import hu.javanetacademy.hoe.item.service.object.ItemService;
 import hu.javanetacademy.hoe.resources.dao.model.Resources;
 import hu.javanetacademy.hoe.resources.service.object.ResourcesService;
+import hu.javanetacademy.hoe.user.dao.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,14 +17,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jf6vmn
  */
-@WebServlet(urlPatterns = {"/user/resources/resources"})
+@WebServlet(urlPatterns = {"/user/resources/new"})
 public class NewResourcesServlet extends HttpServlet{
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {            
       response.setContentType("text/html;charset=UTF-8");
-      
+       User current=(User)request.getSession().getAttribute("user");
+        ResourcesService ls = new ResourcesService();
+        List<Resources>lista = ls.getList();
+        List<Item>listaR = ls.getRList(current.getId());
+        request.setAttribute("items", listaR);
+        request.setAttribute("resources", lista);
+        request.getRequestDispatcher("/newresources.jsp").forward(request, response);
         }
      
     

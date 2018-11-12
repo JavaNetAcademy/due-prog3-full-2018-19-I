@@ -10,5 +10,5 @@ public interface ItemDAOInterface {
     public Item modify(long id, Item item);
     public Item get(long id);
     public Item delete(long id);
-    public List<Item> getList();
+    public List<Item> getList(long userid);
 }

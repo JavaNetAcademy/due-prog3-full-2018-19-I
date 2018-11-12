@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package hu.javanetacademy.hoe.resources.service.object;
-import hu.javanetacademy.hoe.resources.dao.jdbc.ResourcesJDBCDAOImpl;
 import hu.javanetacademy.hoe.resources.dao.model.Resources;
+import hu.javanetacademy.hoe.resources.dao.jdbc.ResourcesJDBCDAOImpl;
 import hu.javanetacademy.hoe.resources.dao.model.ResourcesInterface;
+import hu.javanetacademy.hoe.item.dao.jdbc.ItemJDBCDAOImpl;
+import hu.javanetacademy.hoe.createitem.dao.model.Item;
+import hu.javanetacademy.hoe.createitem.dao.model.ItemDAOInterface;
 import java.util.List;
 
 /**
@@ -15,6 +18,7 @@ import java.util.List;
  */
 public class ResourcesService {
      ResourcesInterface locdb=new ResourcesJDBCDAOImpl();    
+     ItemDAOInterface locR = new ItemJDBCDAOImpl();
     public void create (String nev,String info, long mennyiseg) {
         Resources loc=new Resources();
         loc.setNev(nev);
@@ -38,4 +42,7 @@ public class ResourcesService {
      public List<Resources> getList () {
         return locdb.getList();
     }
+       public List<Item> getRList (long userid) {
+        return locR.getList(userid);
+       }
 }

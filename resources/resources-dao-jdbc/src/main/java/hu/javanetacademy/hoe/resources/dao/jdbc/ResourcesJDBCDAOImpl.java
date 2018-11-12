@@ -37,7 +37,7 @@ public class ResourcesJDBCDAOImpl implements ResourcesInterface {
         @Override
     public Resources create (Resources resources){
         try {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO nyersanyag (name, info, mennyiseg) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps=con.prepareStatement("INSERT INTO nyersanyagok (name, info, mennyiseg) VALUES (?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,resources.getNev());
             ps.setString(2,resources.getInfo());
             ps.setLong(3,resources.getMennyiseg());
@@ -56,7 +56,7 @@ public class ResourcesJDBCDAOImpl implements ResourcesInterface {
     @Override
     public Resources modify(long id, Resources resources) {
         try {
-            PreparedStatement ps=con.prepareStatement("UPDATE item SET name=?, info=?, mennyiseg=? WHERE id=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE nyersanyagok SET name=?, info=?, mennyiseg=? WHERE id=?");
               ps.setString(1, resources.getNev());
             ps.setString(2, resources.getInfo());
             ps.setLong(3, resources.getMennyiseg());
@@ -71,7 +71,7 @@ public class ResourcesJDBCDAOImpl implements ResourcesInterface {
     public Resources delete(long id) {
         PreparedStatement ps;
         try {
-            ps = con.prepareStatement("DELETE FROM item where id=?");
+            ps = con.prepareStatement("DELETE FROM nyersanyagok where id=?");
             ps.setLong(1,id);
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -82,7 +82,7 @@ public class ResourcesJDBCDAOImpl implements ResourcesInterface {
     @Override
     public Resources getById(long Id) {
         try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,name,info, FROM item where id=?");
+            PreparedStatement ps=con.prepareStatement("SELECT id,name,info, FROM nyersanyagok where id=?");
             ps.setLong(1, Id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()) {
@@ -101,7 +101,7 @@ public class ResourcesJDBCDAOImpl implements ResourcesInterface {
      @Override
     public Resources get(long id) {
         try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,name,info,mennyiseg FROM item where id=?");
+            PreparedStatement ps=con.prepareStatement("SELECT id,name,info,mennyiseg FROM nyersanyagok where id=?");
             ps.setLong(1, id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()) {

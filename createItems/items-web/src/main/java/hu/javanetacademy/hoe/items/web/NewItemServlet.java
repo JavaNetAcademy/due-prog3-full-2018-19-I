@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import hu.javanetacademy.hoe.resources.dao.model.Resources;
+import hu.javanetacademy.hoe.user.dao.model.User;
 
 /**
  *
@@ -22,11 +23,13 @@ public class NewItemServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {            
       response.setContentType("text/html;charset=UTF-8");
+       User current=(User)request.getSession().getAttribute("user");
        ItemService ls = new ItemService();
-        List<Item>lista = ls.getList();
+        List<Item>lista = ls.getList(current.getId());
         List<Resources>listaR = ls.getRList();
         request.setAttribute("items", lista);
         request.setAttribute("resources", listaR);
+        request.setAttribute("current", current);
         request.getRequestDispatcher("/newitem.jsp").forward(request, response);
         }
      
@@ -40,7 +43,8 @@ public class NewItemServlet extends HttpServlet {
        String desc=request.getParameter("info");
         String meny =request.getParameter("mennyiseg");
         String nyers = request.getParameter("selectedItem");
-        ls.create(name,desc,Long.parseLong(meny) );
+        User current=(User)request.getSession().getAttribute("user");
+        ls.create(name,desc,Long.parseLong(meny),Long.parseLong(nyers),current.getId());
         request.getRequestDispatcher("/user/items").forward(request, response);
        
     }

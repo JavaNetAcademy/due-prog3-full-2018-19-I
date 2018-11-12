@@ -39,11 +39,12 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         @Override
     public Item create (Item item){
         try {
-            PreparedStatement ps=con.prepareStatement("INSERT INTO item (name, info, mennyiseg,nyersanyagid) VALUES (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps=con.prepareStatement("INSERT INTO item (name, info, mennyiseg, nyersanyagid, userid) VALUES (?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,item.getNev());
             ps.setString(2,item.getInfo());
             ps.setLong(3,item.getMennyiseg());
             ps.setLong(4,item.getNyersanyagid());
+            ps.setLong(5,item.getUserid());
             ps.executeUpdate();
             con.commit();
             ResultSet rs=ps.getGeneratedKeys();
@@ -122,9 +123,10 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
         return null;
     }
     @Override
-    public List<Item> getList() {
+    public List<Item> getList(long puserid) {
                 try {
-            PreparedStatement ps=con.prepareStatement("SELECT id,name,info,mennyiseg FROM item");
+            PreparedStatement ps=con.prepareStatement("SELECT id,name,info,mennyiseg,nyersanyagid,userid FROM item WHERE userid=?");
+            ps.setLong(1,puserid);
             ResultSet rs=ps.executeQuery();
             List<Item> locl=new ArrayList<Item>();
             while(rs.next()) {
@@ -132,7 +134,9 @@ public class ItemJDBCDAOImpl implements ItemDAOInterface {
                 res.setId(rs.getLong(1));
                 res.setNev(rs.getString(2));
                 res.setInfo(rs.getString(3));
-                res.setMennyiseg(rs.getLong(4)); 
+                res.setMennyiseg(rs.getLong(4));
+                res.setNyersanyagid(rs.getLong(5));
+                res.setUserid(rs.getLong(6));
                 locl.add(res);
             }
             return locl;

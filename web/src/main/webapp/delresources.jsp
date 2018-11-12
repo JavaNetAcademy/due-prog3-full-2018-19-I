@@ -3,7 +3,7 @@
     Created on : Nov 9, 2018, 11:11:33 AM
     Author     : jf6vmn
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@
        
       <form action="/hoe/user/resources/delresources" method="post">
             <select name="selectedResources">
-                <c:forEach var="it" items="${items}">
+                <c:forEach var="it" items="${resources}">
                     <option value="${it.id}">${it.nev}</option>
                 </c:forEach>
             </select> 

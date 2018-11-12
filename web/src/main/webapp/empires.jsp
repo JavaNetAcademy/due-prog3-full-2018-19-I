@@ -33,7 +33,9 @@
                 </td>
             </tr>
         </table>
-        </form>        
+            
+        </form> 
+        <form action="/hoe/user/items" method="get"><input type="submit" value="New item"></form>
         <h2>Heroes</h2>
         <table border="1">
             <c:forEach var="hero" items="${heroes}">

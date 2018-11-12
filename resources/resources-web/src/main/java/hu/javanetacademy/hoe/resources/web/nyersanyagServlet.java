@@ -1,21 +1,40 @@
 package hu.javanetacademy.hoe.resources.web;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 import hu.javanetacademy.hoe.resources.dao.model.Resources;
-import java.io.IOException;
-import java.io.PrintWriter;
 import hu.javanetacademy.hoe.resources.service.object.ResourcesService;
 import java.util.List;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  *
- * @author jf6vmn
+ * @author Nagy Adam
  */
-@WebServlet(urlPatterns = {"/user/resources"})
-public class ResourcesServlet extends HttpServlet{
-    private ResourcesService is =new ResourcesService();
+@WebServlet(urlPatterns = {"/user/nyersanyag"})
+public class nyersanyagServlet extends HttpServlet {
+ private ResourcesService is =new ResourcesService();
+   
+   
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -23,6 +42,7 @@ public class ResourcesServlet extends HttpServlet{
         request.setAttribute("resources", resources);
         request.getRequestDispatcher("/resources.jsp").forward(request, response);
     }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -35,6 +55,7 @@ public class ResourcesServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+      
     }
 
     /**
@@ -46,4 +67,5 @@ public class ResourcesServlet extends HttpServlet{
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

@@ -18,11 +18,13 @@ import java.util.List;
 public class ItemService {
      ItemDAOInterface locdb=new ItemJDBCDAOImpl();  
      ResourcesInterface locR=new ResourcesJDBCDAOImpl();
-    public void create (String nev,String info, long mennyiseg) {
+    public void create (String nev,String info, long mennyiseg,long nyersanyagid,long userid) {
         Item loc=new Item();
         loc.setNev(nev);
         loc.setInfo(info);
         loc.setMennyiseg(mennyiseg);
+        loc.setNyersanyagid(nyersanyagid);
+        loc.setUserid(userid);
         locdb.create(loc);
     }
     public void delete (long id)
@@ -38,13 +40,10 @@ public class ItemService {
     public Item get(long id) {
         return locdb.get(id);
     }
-     public List<Item> getList () {
-        return locdb.getList();
+     public List<Item> getList (long userid) {
+        return locdb.getList(userid);
     }
      public List<Resources> getRList(){
       return locR.getList();
-     }
-    
-
-    
+     }      
 }

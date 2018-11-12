@@ -7,6 +7,7 @@ package hu.javanetacademy.hoe.resources.web;
 
 import hu.javanetacademy.hoe.resources.dao.model.Resources;
 import hu.javanetacademy.hoe.resources.service.object.ResourcesService;
+import hu.javanetacademy.hoe.user.dao.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -41,7 +42,7 @@ public class DelResourcesServlet extends HttpServlet{
             throws ServletException, IOException {
         //doGet(request, response);
         ResourcesService ls = new ResourcesService();
-        long selected = Long.parseLong(request.getParameter("selectedItem"));
+        long selected = Long.parseLong(request.getParameter("selectedResources"));
         if (request.getParameter("modify")!=null) {
             if (request.getParameter("newname")!=null || request.getParameter("newinfo")!=null) {
                 Resources oldloc=ls.get(selected);
@@ -54,7 +55,7 @@ public class DelResourcesServlet extends HttpServlet{
                     newmennyiseg.setInfo(request.getParameter("newinfo"));     
                 }
                 if (!request.getParameter("newamount").equals("")) {
-                    newmennyiseg.setMennyiseg(Long.parseLong(request.getParameter("newinfo")));     
+                    newmennyiseg.setMennyiseg(Long.parseLong(request.getParameter("newamount")));     
                 }
                 ls.modify(selected, newmennyiseg);
             }

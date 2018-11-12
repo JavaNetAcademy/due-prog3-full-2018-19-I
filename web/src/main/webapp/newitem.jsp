@@ -14,7 +14,7 @@
     <body>
      <form action="/hoe/user/items/new" method="post">
             <fieldset>
-                <legend>Új Item</legend>
+                <legend>Új Item hozzáadása ${current.name} felshasználó eszköztárához.</legend>
                 <div>
                     <label>Item név: </label>
                     <input name="nev">

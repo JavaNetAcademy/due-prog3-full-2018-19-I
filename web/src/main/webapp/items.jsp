@@ -13,19 +13,22 @@
         <title>Items Page</title>
     </head>
     <body>
-        <h1>Items</h1>
+        <h1>Belépve mint: <b> ${current.name}</b> </h1>
         <table border="1">
             <tr>
                 <th>Item name</th>
                 <th>Description</th>
                 <th>Amount</th>
+                <th>Nyersanyagid</th>
+                
             </tr>
             <c:forEach var="item" items="${items}">
                 <tr>
                     <td>${item.nev}</td>
                     <td>${item.info}</td>
                     <td>${item.mennyiseg}</td>
-                </tr>
+                    <td>${item.nyersanyagid}</td>
+               </tr>
             </c:forEach>
         </table>
         </br>

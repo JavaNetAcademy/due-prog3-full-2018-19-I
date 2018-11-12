@@ -19,7 +19,17 @@ public class Item {
     //Menyiség
     private long mennyiseg;
     
+        
     private long nyersanyagid;
+    private long userid;
+
+    public long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(long userid) {
+        this.userid = userid;
+    }
 
     public long getNyersanyagid() {
         return nyersanyagid;
@@ -29,12 +39,13 @@ public class Item {
         this.nyersanyagid = nyersanyagid;
     }
 
-    public Item(long id, String nev, String info, long mennyiseg, long nyersanyagid) {
+    public Item(long id, String nev, String info, long mennyiseg, long nyersanyagid, long userid) {
         this.id = id;
         this.nev = nev;
         this.info = info;
         this.mennyiseg = mennyiseg;
         this.nyersanyagid = nyersanyagid;
+        this.userid = userid;
     }
 
     public Item() {

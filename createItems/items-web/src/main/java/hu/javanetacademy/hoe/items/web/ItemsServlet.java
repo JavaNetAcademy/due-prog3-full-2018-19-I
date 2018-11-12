@@ -1,15 +1,9 @@
 package hu.javanetacademy.hoe.items.web;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import hu.javanetacademy.hoe.createitem.dao.model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
 import hu.javanetacademy.hoe.item.service.object.ItemService;
+import hu.javanetacademy.hoe.user.dao.model.User;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +21,10 @@ public class ItemsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Item> items=is.getList();
+        User current=(User)request.getSession().getAttribute("user");
+        List<Item> items=is.getList(current.getId());
         request.setAttribute("items", items);
+        request.setAttribute("current", current);
         request.getRequestDispatcher("/items.jsp").forward(request, response);
     }
 

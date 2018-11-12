@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import hu.javanetacademy.hoe.resources.dao.model.Resources;
+import hu.javanetacademy.hoe.user.dao.model.User;
 
 /**
  *
@@ -25,8 +26,9 @@ public class DelItemServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         User current=(User)request.getSession().getAttribute("user");
         ItemService ls = new ItemService();
-        List<Item>lista = ls.getList();
+        List<Item>lista = ls.getList(current.getId());
         List<Resources>listaR = ls.getRList();
         request.setAttribute("items", lista);
         request.setAttribute("resources", listaR);
