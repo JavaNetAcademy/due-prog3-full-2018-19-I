@@ -17,6 +17,7 @@
         <module>createItems</module>
         <module>heroClass</module>
         <module>resources</module>
+        <module>armor</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -36,7 +36,7 @@ public class NewItemServlet extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {      
       
          ItemService ls=new ItemService();
        String name=request.getParameter("nev");
